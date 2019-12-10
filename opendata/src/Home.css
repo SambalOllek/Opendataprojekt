@@ -1,0 +1,13 @@
+body {
+    background-color:grey;
+    color:white;
+    text-align:center;
+    background-image:url("BG1.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
+
+#Hero {
+   
+}
