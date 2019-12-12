@@ -1,6 +1,6 @@
 import React from 'react';
-import './Home.css';
-import Login from './Login';
+//import './Home.css';
+import {Login} from './Login';
 
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
                 <div id="Hero">
                     
                     <div>
-        <button id="Login" onClick={Login}>LOGIN</button>
+        <Login/>
       </div>
                 </div>
             </header>
