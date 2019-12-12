@@ -2,12 +2,14 @@ body {
     background-color:grey;
     color:white;
     text-align:center;
-    background-image:url("BG2.png");
+    
+}
+#Hero {
+    background-image:url("BG3.jpg");
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
 }
-
 @font-face {
     font-family: "font";
     src: url("C:\Users\TE4\Documents\GitHub\Opendataprojekt\src\BebasNeue-Regular.ttf");
@@ -16,18 +18,25 @@ body {
 #Login {
     font-family:font;
     font-size: 15px;
-    background-color: black;
+    background-color: #DCD0C0;
     margin-top: 50px;
-    color:white;
-    border: 2px solid salmon;
+    color:grey;
+    border: 2px solid #f4f4f4;
     border-radius: 5px;
     padding: 7px 30px;
+    box-shadow: black;
     
+}
+#Login:onhover {
+    cursor: pointer;
 }
 
 #maintext {
-    margin-top: 150px;
+    margin-top: 900px;
+    margin-left: 50px;
     width: 50%;
     text-align:center;
     font-family: font;
+    color:black;
+    font-size: 20px;
 }

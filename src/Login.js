@@ -3,7 +3,7 @@ import React from "react";
 
 //När man klickar på knappen så öppnas en modal
 export default function Login(props){
-    const[ShowModal, setShowModal] = React.useState(false);
+    let[ShowModal, setShowModal] = React.useState(false);
     let modal = "modal";
     if(ShowModal === true){
         modal = "modal is-activate";
