@@ -12,7 +12,7 @@ body {
 }
 @font-face {
     font-family: "font";
-    src: url("C:\Users\TE4\Documents\GitHub\Opendataprojekt\src\BebasNeue-Regular.ttf");
+    src: url("./BebasNeue-Regular.ttf");
 }
 
 #Login {
