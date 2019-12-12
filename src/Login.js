@@ -2,15 +2,13 @@ import React from "react";
 
 
 //När man klickar på knappen så öppnas en modal
-function Login(props){
+export default function Login(props){
     const[ShowModal, setShowModal] = React.useState(false);
     let modal = "modal";
     if(ShowModal === true){
         modal = "modal is-activate";
     }
-
-}
-return <div className= "Login">
+    return <div className= "Login">
     <div class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
@@ -20,3 +18,4 @@ return <div className= "Login">
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
 </div>
+}

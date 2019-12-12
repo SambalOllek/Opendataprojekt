@@ -3,5 +3,6 @@ import ReactDOM from 'react-dom';
 import "../node_modules/bulma/css/bulma.css";
 import App from './App';
 import Home from './Home';
+import Login from './Login'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById('root'));
