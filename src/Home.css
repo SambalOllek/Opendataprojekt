@@ -1,5 +1,5 @@
 body {
-    background-color:grey;
+    background-color: #F4F4F4;
     color:white;
     text-align:center;
     
@@ -18,10 +18,10 @@ body {
 #Login {
     font-family:font;
     font-size: 15px;
-    background-color: #DCD0C0;
+    background-color: transparent;
     margin-top: 50px;
-    color:grey;
-    border: 2px solid #f4f4f4;
+    color: #373737;
+    border: 2px solid #373737;
     border-radius: 5px;
     padding: 7px 30px;
     box-shadow: black;
@@ -29,6 +29,7 @@ body {
 }
 #Login:onhover {
     cursor: pointer;
+    background-color: #dcd0dc;
 }
 
 #maintext {
@@ -37,6 +38,6 @@ body {
     width: 50%;
     text-align:center;
     font-family: font;
-    color:black;
+    color:#373737;
     font-size: 20px;
 }
