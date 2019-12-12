@@ -5,14 +5,14 @@ body {
     
 }
 #Hero {
-    background-image:url("BG3.jpg");
+    background-image:url("./Addons/BG3.jpg");
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
 }
 @font-face {
     font-family: "font";
-    src: url("./BebasNeue-Regular.ttf");
+    src: url("./Addons/BebasNeue-Regular.ttf");
 }
 
 #Login {
