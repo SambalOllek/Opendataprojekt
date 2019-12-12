@@ -1,4 +1,5 @@
 import React from "react";
+import LogCSS from "./CSS/Login.css"
 
 
 //När man klickar på knappen så öppnas en modal
@@ -26,7 +27,7 @@ export function Login(props) {
                 <div className="modal-content">
                     <input className="input" id="usn" type="text" placeholder="Username" />
                     <input className="input" id="psw" type="text" placeholder="Password" />
-                    <button type="button" id="ClickLogin">Login</button>
+                    <button type="button" id="ClickLogin">Login</button> <button type="button" id="ClickLogin">Register</button>
                 </div>
                 <button className="modal-close is-large" onClick={closeModal} aria-label="close">modal</button>
             </div>

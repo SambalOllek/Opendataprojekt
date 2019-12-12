@@ -1,7 +1,8 @@
 body {
-    background-color: #F4F4F4;
+    background-color: #e9decf;
     color:white;
     text-align:center;
+    
     
 }
 #Hero {
@@ -27,9 +28,10 @@ body {
     box-shadow: black;
     
 }
-#Login:onhover {
+#Login:hover {
     cursor: pointer;
-    background-color: #dcd0dc;
+    background-color: #dcd0c0;
+    opacity: 1;
 }
 
 #maintext {
