@@ -5,7 +5,8 @@ import LogCSS from "./CSS/Login.css"
 //När man klickar på knappen så öppnas en modal
 export default function Login(props) {
     async function onLogin() {
-        const username = 
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
     }
     const [ShowModal, setShowModal] = React.useState(false);
     let modal = "modal";
