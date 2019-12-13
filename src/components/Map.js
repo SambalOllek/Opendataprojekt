@@ -8,8 +8,8 @@ import {
     interaction, layer, custom, control, //name spaces
     Interactions, Overlays, Controls,     //group
     Map, Layers, Overlay, Util    //objects
-  } from "react-openlayers";
-  import React from 'react';
+  } from "./node_modules/react-openlayers";
+  import React from './node_modules/react';
   import "./sass/Map.scss";
 
 export default function Maps(props){

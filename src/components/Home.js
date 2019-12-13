@@ -1,9 +1,7 @@
-import React from 'react';
+import React from './node_modules/react';
 import './sass/Home.scss';
 import { Login } from './Login';
 import Maps from './Map';
-
-
 
 export default function Home() {
 

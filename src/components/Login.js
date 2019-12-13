@@ -1,4 +1,4 @@
-import React from "react";
+import React from "./node_modules/react";
 
 import "./sass/Login.scss";
 import {CheckUser} from "./Service.js";
