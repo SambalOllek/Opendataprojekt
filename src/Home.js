@@ -20,7 +20,7 @@ export default function Home() {
 
             <footer>
                 <div id="container">
-                    <p>Dummy</p>
+                    <h1 id="Searchhead">Hitta bilar i ditt område</h1>
                 </div>
             </footer>
         </div >
