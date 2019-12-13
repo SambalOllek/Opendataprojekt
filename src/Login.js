@@ -1,5 +1,7 @@
 import React from "react";
-import LogCSS from "./CSS/Login.css"
+
+import "./sass/Login.scss";
+import {CheckUser} from "./Service.js";
 
 
 //När man klickar på knappen så öppnas en modal
@@ -7,6 +9,13 @@ export function Login(props) {
     async function onLogin() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
+        const isLoggedIn = await CheckUser(`Basic ${btoa(username + ":" + password)}`)
+        if(isLoggedIn === true) {
+            props.Verified();
+        } else {
+            console.log("Access Denied")
+            return <p id="incorrect">Fel inloggningsinformation</p>
+        }
     }
     const [ShowModal, setShowModal] = React.useState(false);
     let modal = "modal";

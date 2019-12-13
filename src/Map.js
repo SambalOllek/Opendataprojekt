@@ -7,8 +7,8 @@ import OSM from 'ol/source/OSM';
 
 var map = new Map({
     view: new View({
-      center: [0, 0],
-      zoom: 1
+      center: [-20000, 3500000],
+      zoom: 5
     }),
     layers: [
       new TileLayer({
