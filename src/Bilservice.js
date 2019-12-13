@@ -1,6 +1,6 @@
 
 export async function FetchBilinfo() {
-    let result = await fetch("/")
+    let result = await fetch("10.16.58.160:8080/Opendata-Backend/api/items")
 
     if (result.ok) {
         const data = await result.json();
