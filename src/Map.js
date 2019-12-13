@@ -10,12 +10,13 @@ import {
     Map, Layers, Overlay, Util    //objects
   } from "react-openlayers";
   import React from 'react';
+  import "./sass/Map.scss";
 
-export default function Maps(){
+export default function Maps(props){
  
 
-    return <div>
-  <Map view={{center: [0, 0], zoom: 2}}>
+    return <div id="map">
+  <Map view={{center: [59.334591, 18.063240], zoom: 4}}>
   <Layers>
     <layer.Tile/>
   </Layers>
@@ -23,10 +24,6 @@ export default function Maps(){
   </Overlays>
   <Controls attribution={false} zoom={true}>
     <control.Rotate />
-    <control.ScaleLine />
-    <control.OverviewMap />
-    <control.ZoomSlider />
-    <control.ZoomToExtent />
     <control.Zoom />
   </Controls>
 

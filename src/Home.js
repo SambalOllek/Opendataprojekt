@@ -1,6 +1,7 @@
 import React from 'react';
 import './sass/Home.scss';
 import { Login } from './Login';
+import Maps from './Map';
 
 
 
@@ -97,7 +98,9 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <Maps/>
             </div>
+            
             <footer>
             </footer>
         </div >
