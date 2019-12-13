@@ -4,4 +4,4 @@ import "../node_modules/bulma/css/bulma.css";
 import Home from './Home';
 import Maps from './Map';
 
-ReactDOM.render(<Home/>, document.getElementById('root'));
+ReactDOM.render(<Maps/>, document.getElementById('root'));
