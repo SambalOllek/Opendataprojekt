@@ -1,5 +1,7 @@
+@import './main';
+
 body {
-    background-color: #e9decf;
+    background-color: $paper;
     color:white;
     text-align:center;
     
@@ -21,16 +23,16 @@ body {
     font-size: 15px;
     background-color: transparent;
     margin-top: 50px;
-    color: #373737;
-    border: 2px solid #373737;
+    color: $coal;
+    border: 2px solid $coal;
     border-radius: 5px;
     padding: 7px 30px;
-    box-shadow: black;
+    
     
 }
 #Login:hover {
     cursor: pointer;
-    background-color: #dcd0c0;
+    background-color: $bronze-color;
     opacity: 1;
 }
 
@@ -40,6 +42,6 @@ body {
     width: 50%;
     text-align:center;
     font-family: font;
-    color:#373737;
+    color: $coal;
     font-size: 20px;
 }
