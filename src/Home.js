@@ -1,6 +1,7 @@
 import React from 'react';
-import './CSS/Home.css';
+import './sass/Home.scss';
 import { Login } from './Login';
+
 
 
 export default function Home() {
