@@ -1,45 +1,7 @@
-body {
-    background-color: #e9decf;
-    color:white;
-    text-align:center;
-    
-    
-}
-#Hero {
-    background-image:url("./Addons/BG3.jpg");
-    background-repeat: no-repeat;
+.App {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    background-size: cover;
-}
-@font-face {
-    font-family: "font";
-    src: url("./Addons/BebasNeue-Regular.ttf");
-}
-
-#Login {
-    font-family:font;
-    font-size: 15px;
-    background-color: transparent;
-    margin-top: 50px;
-    color: #373737;
-    border: 2px solid #373737;
-    border-radius: 5px;
-    padding: 7px 30px;
-    box-shadow: black;
-    
-}
-#Login:hover {
-    cursor: pointer;
-    background-color: #dcd0c0;
-    opacity: 1;
-}
-
-#maintext {
-    margin-top: 900px;
-    margin-left: 50px;
-    width: 50%;
-    text-align:center;
-    font-family: font;
-    color:#373737;
-    font-size: 20px;
 }

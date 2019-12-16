@@ -1,35 +1,54 @@
-//Kartan som används
-/*import Map from 'ol/Map';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';*/
-
-import {
-    interaction, layer, custom, control, //name spaces
-    Interactions, Overlays, Controls,     //group
-    Map, Layers, Overlay, Util    //objects
-} from "react-openlayers";
-import React from 'react';
-import "../sass/Map.scss";
-
-export default function Maps(props) {
+import OSM from 'ol/source/OSM';
 
 
-    return <div id="map">
-        <Map view={{center: [59.334591, 18.063240], zoom: 4}}>
-            <Layers>
-                <layer.Tile/>
-            </Layers>
-            <Overlays>
-            </Overlays>
-            <Controls attribution={false} zoom={true}>
-                <control.Rotate/>
-                <control.Zoom/>
-            </Controls>
+class MapComponent extends Component {
 
-        </Map>
-    </div>
+    constructor (props) {
+        super(props);
+        this.mapRef = null;
+        this.olMap = null;
+        this.setMapRef = element => {
+            this.mapRef = element;
+        }
+    }
+
+    render() {
+        const styles = { height: '50%', width: '50%'}
+        return(
+            <div style={styles} ref={this.setMapRef}></div>
+        )
+    }
+
+    componentWillUpdate(nextProps) {
+        const mapView = this.olMap.getView();
+        mapView.animate({
+            center: nextProps.currentLocation,
+            duration: 2000
+        });
+    }
+
+    componentDidMount() {
+        const mapDOMNode = ReactDOM.findDOMNode(this.mapRef);
+        this.olMap = new Map({
+            target: mapDOMNode,
+            layers: [
+                new TileLayer({
+                    source: new OSM()
+                })
+            ],
+            view: new View({
+                center: this.props.currentLocation,
+                zoom: 8
+            })
+        });
+    }
+
 }
 
-//<interaction.Select style={selectedMarkerStyle} />
-  
+export default MapComponent
