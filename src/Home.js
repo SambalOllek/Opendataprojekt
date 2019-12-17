@@ -2,13 +2,14 @@ import React from 'react';
 import './sass/Home.scss';
 import { Login } from './Login';
 import Maps from './Map';
-
+//import PluggableMap from './PluggableMap';
 
 
 export default function Home() {
 
     return (
         <div>
+            <script src="https://unpkg.com/geo-coder"></script>
             <header>
                 <div id="Hero">
                     <div>
