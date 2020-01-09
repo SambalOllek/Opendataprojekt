@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../sass/Login.scss";
-import {CheckUser} from "./Service.js";
+import {CheckUser} from "./authentication.js";
 
 
 //När man klickar på knappen så öppnas en modal
