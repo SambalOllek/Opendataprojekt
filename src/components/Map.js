@@ -14,7 +14,6 @@ import "../sass/Map.scss";
 
 export default function Maps(props) {
 
-
     return <div id="map">
         <Map view={{center: [59.334591, 18.063240], zoom: 4}}>
             <Layers>
