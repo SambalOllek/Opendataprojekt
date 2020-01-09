@@ -4,6 +4,7 @@ import "../sass/Login.scss";
 import {CheckUser} from "./authentication.js";
 
 
+
 //När man klickar på knappen så öppnas en modal
 export function Login(props) {
     async function onLogin() {
