@@ -1,5 +1,5 @@
 import React from 'react';
-import './sass/Home.scss';
+import '../sass/Home.scss';
 import { Login } from './Login';
 import Maps from './Map';
 //import PluggableMap from './PluggableMap';
