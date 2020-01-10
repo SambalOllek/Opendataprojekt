@@ -22,6 +22,7 @@ import CircleStyle from "ol/style/Circle";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import OSM from "ol/source/OSM";
+import TileJSON from 'ol/source/TileJSON';
 
 export default function Maps(props) {
 
@@ -58,10 +59,74 @@ let styles = {
   })
 };
 
+var vectorSource = new VectorSource({
+  features: [Feature]
+});
+
+var vectorLayer = new VectorLayer({
+  source: vectorSource
+});
+
+var rasterLayer = new TileLayer({
+  source : new TileJSON({
+    url: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
+    crossOrigin: ''
+  })
+});
+var map = new Map({
+  layers: [rasterLayer, vectorLayer],
+  target: document.getElementById('map'),
+  crossOrigin: ''
+})
+
+var element = document.getElementById('popup');
+
+var popup = new Overlay({
+  element: element,
+  positioning: 'bottom-center',
+  stopEvent: false,
+  offset: [0,-50]
+});
+map.addOverlay(popup);
+
+//popup när man klickar
+map.on('click', function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
+    function(feature) {
+      return feature;
+    });
+    if (feature) {
+      var coodirnates = feature.getGeometry().getCoordinates();
+      popup.setPosition(coordinates);
+      $(element).popover({
+        placement: 'top',
+        html: true,
+        content: feature.get('type')
+      });
+      $(element).popover('show');
+    } else {
+      $(element).popover('destroy');
+    }
+});
+
+//ändrar cursor när man hovrar över markern
+map.on('pointermove' , function(e) {
+  if (e.dragging) {
+    $(element).popover('destroy');
+    return;
+  }
+  var pixel = map.getEventPixel(e.originalEvent);
+  var hit = map.hasFeatureAtPixel(pixel);
+  map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+
 return <> <div id="map">
     <Map view={{ center: [56.87767, 14.80906], zoom: 5 }}>
       <Layers>
         <layer.Tile />
+        <Feature>
+
+        </Feature>
       </Layers>
       <Overlays>
       </Overlays>
