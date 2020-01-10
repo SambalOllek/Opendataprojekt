@@ -15,11 +15,6 @@ export async function CheckUser(username, password) {
 }
 
 export async function NewUser(username, password) {
-    if(username === "home"){
-        return true;
-    }else{
-        return false;
-    }
     
     /*const res = await fetch("" , {
         method: "GET",

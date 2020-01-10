@@ -18,10 +18,10 @@ export function Login(props) {
         }
     }
 //If username/password not exist, modal close, else = message show up
-    function register(){
+    async function register(){
         const rusername = document.getElementById("username").value;
         const rpassword = document.getElementById("password").value;
-        const newRegiser = NewUser(rusername, rpassword);
+        const newRegiser = await NewUser(rusername, rpassword);
         if(newRegiser === true){
             closeModal();
         }else{
@@ -56,8 +56,8 @@ export function Login(props) {
                     <input className="input" id="username" type="text" placeholder="Username" />
                     <input className="input" id="password" type="password" placeholder="Password" />
                     <p>{ShowError}</p>
-                    <button type="button" id="ClickLogin" onClick={onLogin}>Login</button> <button type="button" id="ClickLogin"onClick={register}>Register</button>
-                    <button type="button" id="ClickLogin" onClick={""}>Log in with github</button>
+                    <button type="button" className="ClickLogin" onClick={onLogin}>Login</button> <button type="button" className="ClickLogin"onClick={register}>Register</button>
+                    <a href="https://github.com/login/oauth/authorize?client_id=0b4be5c42fd4aad65f85">Log in github</a>
                 </div>
                 <button className="modal-close is-large" onClick={closeModal} aria-label="close">modal</button>
             </div>
