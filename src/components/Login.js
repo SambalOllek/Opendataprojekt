@@ -57,6 +57,7 @@ export function Login(props) {
                     <input className="input" id="password" type="password" placeholder="Password" />
                     <p>{ShowError}</p>
                     <button type="button" id="ClickLogin" onClick={onLogin}>Login</button> <button type="button" id="ClickLogin"onClick={register}>Register</button>
+                    <button type="button" id="ClickLogin" onClick={""}>Log in with github</button>
                 </div>
                 <button className="modal-close is-large" onClick={closeModal} aria-label="close">modal</button>
             </div>
