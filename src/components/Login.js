@@ -56,8 +56,7 @@ export function Login(props) {
                     <input className="input" id="username" type="text" placeholder="Username" />
                     <input className="input" id="password" type="password" placeholder="Password" />
                     <p>{ShowError}</p>
-                    <button type="button" className="ClickLogin" onClick={onLogin}>Login</button> <button type="button" className="ClickLogin"onClick={register}>Register</button>
-                    <a href="https://github.com/login/oauth/authorize?client_id=0b4be5c42fd4aad65f85">Log in github</a>
+                    <button type="button" className="ClickLogin" onClick={onLogin}>Login</button> <button type="button" className="ClickLogin"onClick={register}>Register</button> <a href="https://github.com/login/oauth/authorize?client_id=0b4be5c42fd4aad65f85">Log in github</a>
                 </div>
                 <button className="modal-close is-large" onClick={closeModal} aria-label="close">modal</button>
             </div>
