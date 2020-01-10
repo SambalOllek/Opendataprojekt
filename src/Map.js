@@ -26,107 +26,109 @@ import TileJSON from 'ol/source/TileJSON';
 
 export default function Maps(props) {
 
-declare var ol;
-  
-const coordinatesArray = [
-  {
-    longitude: 59.334591,
-    latitude: 18.063240
-  },
-  {
-    longitude: 59.334591,
-    latitude: 18.063240
-  },
-  {
-    longitude: 59.334591,
-    latitude: 18.063240
-  }]
-  ;
+  declare var ol;
 
-const geoMarkerArray = coordinatesArray.map(coordinates => {
-  return new Feature({
-    type: "geoMarker",
-    geometry: new Point(ol.proj.fromLonLat([coordinates.longitude, coordinates.latitude])),
-    coordinates: coordinates
-  })
-});
+  const coordinatesArray = [
+    {
+      longitude: 59.334591,
+      latitude: 18.063240
+    },
+    {
+      longitude: 59.334591,
+      latitude: 18.063240
+    },
+    {
+      longitude: 59.334591,
+      latitude: 18.063240
+    }]
+    ;
 
-let styles = {
-  "geoMarker": new Style({
-    image: new Icon({
-      src: markerIcon
+  const geoMarkerArray = coordinatesArray.map(coordinates => {
+    let feature = new Feature({
+      type: "geoMarker",
+      geometry: new Point(ol.proj.fromLonLat([coordinates.longitude, coordinates.latitude])),
+      coordinates: coordinates
     })
-  })
-};
+    feature.setStyle(styles);
+    return feature;
+  });
 
-var vectorSource = new VectorSource({
-  features: [Feature]
-});
+  let styles = {
+    "geoMarker": new Style({
+      image: new Icon({
+        src: markerIcon
+      })
+    })
+  };
 
-var vectorLayer = new VectorLayer({
-  source: vectorSource
-});
+  var vectorSource = new VectorSource({
+    features: geoMarkerArray
+  });
 
-var rasterLayer = new TileLayer({
-  source : new TileJSON({
-    url: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
-    crossOrigin: ''
-  })
-});
-var map = new Map({
-  layers: [rasterLayer, vectorLayer],
-  target: document.getElementById('map'),
-  crossOrigin: ''
-})
+  var vectorLayer = new VectorLayer({
+    source: vectorSource
+  });
 
-var element = document.getElementById('popup');
+  var rasterLayer = new TileLayer({
+    source: new TileJSON({
+      url: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
+      crossOrigin: ''
+    })
+  });
+  // var map = new Map({
+  //   layers: [rasterLayer, vectorLayer],
+  //   target: document.getElementById('map'),
+  //   crossOrigin: ''
+  // })
 
-var popup = new Overlay({
-  element: element,
-  positioning: 'bottom-center',
-  stopEvent: false,
-  offset: [0,-50]
-});
-map.addOverlay(popup);
+  // var element = document.getElementById('popup');
 
-//popup när man klickar
-map.on('click', function(evt) {
-  var feature = map.forEachFeatureAtPixel(evt.pixel,
-    function(feature) {
-      return feature;
-    });
-    if (feature) {
-      var coodirnates = feature.getGeometry().getCoordinates();
-      popup.setPosition(coordinates);
-      $(element).popover({
-        placement: 'top',
-        html: true,
-        content: feature.get('type')
-      });
-      $(element).popover('show');
-    } else {
-      $(element).popover('destroy');
-    }
-});
+  // var popup = new Overlay({
+  //   element: element,
+  //   positioning: 'bottom-center',
+  //   stopEvent: false,
+  //   offset: [0, -50]
+  // });
+  // map.addOverlay(popup);
 
-//ändrar cursor när man hovrar över markern
-map.on('pointermove' , function(e) {
-  if (e.dragging) {
-    $(element).popover('destroy');
-    return;
-  }
-  var pixel = map.getEventPixel(e.originalEvent);
-  var hit = map.hasFeatureAtPixel(pixel);
-  map.getTarget().style.cursor = hit ? 'pointer' : '';
-});
+  // //popup när man klickar
+  // map.on('click', function (evt) {
+  //   var feature = map.forEachFeatureAtPixel(evt.pixel,
+  //     function (feature) {
+  //       return feature;
+  //     });
+  //   if (feature) {
+  //     var coodirnates = feature.getGeometry().getCoordinates();
+  //     popup.setPosition(coordinates);
+  //     $(element).popover({
+  //       placement: 'top',
+  //       html: true,
+  //       content: feature.get('type')
+  //     });
+  //     $(element).popover('show');
+  //   } else {
+  //     $(element).popover('destroy');
+  //   }
+  // });
 
-return <> <div id="map">
-    <Map view={{ center: [56.87767, 14.80906], zoom: 5 }}>
+  // //ändrar cursor när man hovrar över markern
+  // map.on('pointermove', function (e) {
+  //   if (e.dragging) {
+  //     $(element).popover('destroy');
+  //     return;
+  //   }
+  //   var pixel = map.getEventPixel(e.originalEvent);
+  //   var hit = map.hasFeatureAtPixel(pixel);
+  //   map.getTarget().style.cursor = hit ? 'pointer' : '';
+  // });
+
+  return <> <div id="map">
+    <Map view={{ center: ol.proj.fromLonLat([56.87767, 14.80906]), zoom: 5 }}>
       <Layers>
         <layer.Tile />
-        <Feature>
+        <layer.Vector source={vectorSource}>
 
-        </Feature>
+        </layer.Vector>
       </Layers>
       <Overlays>
       </Overlays>
@@ -137,6 +139,6 @@ return <> <div id="map">
 
     </Map>
   </div>
-{/* <interaction.Select style={selectedMarkerStyle} /> */}
-</>
+    {/* <interaction.Select style={selectedMarkerStyle} /> */}
+  </>
 }
