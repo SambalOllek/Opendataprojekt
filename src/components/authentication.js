@@ -1,21 +1,32 @@
-export async function CheckUser(authString) {
-    const res = await fetch("" , {
+export async function CheckUser(username, password) {
+    if(username === "user"){
+        return true;
+    }else{
+        return false;
+    }
+    /*const res = await fetch("" , {
         method: "GET",
         headers: {
             'Authorization': authString
         }
     })
     const success = res.status === 200;
-    return success;
+    return success;*/
 }
 
-export async function RegisterUser(authString) {
-    const res = await fetch("" , {
+export async function NewUser(username, password) {
+    if(username === "home"){
+        return true;
+    }else{
+        return false;
+    }
+    
+    /*const res = await fetch("" , {
         method: "GET",
         headers: {
             'Authorization': authString
         }
     })
     const success = res.status === 200;
-    return success;
+    return success;*/
 }
