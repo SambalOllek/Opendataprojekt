@@ -1,16 +1,16 @@
 import React from "react";
 
 import "../sass/Login.scss";
-import {CheckUser} from "./authentication.js";
-import {NewUser} from "./authentication.js"
+import {getToken, registerUser, verifyToken} from "./authentication.js";
 
 
 export default function Login(props) {
     async function onLogin() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
-        const isLoggedIn = await CheckUser(username, password);
-        if(isLoggedIn === true) {
+        const token = await getToken(username, password);
+        window.localStorage.setItem("token", token);
+        if(token !== "") {
             closeModal();
         } else {
             setShowError("incorrect");
@@ -21,7 +21,7 @@ export default function Login(props) {
     async function register(){
         const rusername = document.getElementById("username").value;
         const rpassword = document.getElementById("password").value;
-        const newRegiser = await NewUser(rusername, rpassword);
+        const newRegiser = await registerUser(rusername, rpassword);
         if(newRegiser === true){
             closeModal();
         }else{
