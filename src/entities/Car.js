@@ -1,5 +1,5 @@
 
-export class Car{
+export default class Car{
 
     constructor({id, link, address, year, fuel, gearbox, brand, model, price, mileage, drivewheel, regnum}){
         this.id = id;

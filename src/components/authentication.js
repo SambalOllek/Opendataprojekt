@@ -4,7 +4,7 @@ export async function CheckUser(username, password) {
     }else{
         return false;
     }
-    /*const res = await fetch("" , {
+    /*const res = await fetch("http://localhost:8080/Opendata-Backend/api/" , {
         method: "GET",
         headers: {
             'Authorization': authString
@@ -16,7 +16,7 @@ export async function CheckUser(username, password) {
 
 export async function NewUser(username, password) {
     
-    /*const res = await fetch("" , {
+    /*const res = await fetch("http://localhost:8080/Opendata-Backend/api/" , {
         method: "GET",
         headers: {
             'Authorization': authString

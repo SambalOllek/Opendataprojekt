@@ -5,7 +5,7 @@ import {CheckUser} from "./authentication.js";
 import {NewUser} from "./authentication.js"
 
 
-export function Login(props) {
+export default function Login(props) {
     async function onLogin() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
