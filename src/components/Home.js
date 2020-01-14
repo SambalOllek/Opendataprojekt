@@ -3,31 +3,27 @@ import '../sass/Home.scss';
 import Login from './Login';
 import Maps from './Map';
 import getCars from "../logic/car";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Home() {
 
     const [cars, setCars] = React.useState([]);
-    React.useEffect(()=>{getCars(setCars)}, []);
+    React.useEffect(() => {
+        getCars(setCars)
+    }, []);
+
     console.log(cars);
+
     return (
         <div>
-            <header>
-                <div id="Hero">
-                    <div>
-                    </div>
-                    <Login />
-                    <h2 id="maintext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat sapien eu libero vestibulum dignissim. Ut lacinia aliquam fermentum. Nunc metus nunc</h2>
-                </div>
-            </header>
-
-
-
+            <Header></Header>
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            <input className="input" type="text" placeholder="Sök efter en plats" />
+                            <input className="input" type="text" placeholder="Sök efter en plats"/>
                         </div>
                         <div className="control">
                             <a className="button is-info">
@@ -102,10 +98,8 @@ export default function Home() {
                 </div>
                 <Maps/>
             </div>
-
-            <footer>
-            </footer>
-        </div >
+            <Footer></Footer>
+        </div>
 
     )
 }
