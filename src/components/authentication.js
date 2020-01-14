@@ -3,7 +3,7 @@ export async function getToken(username, password) {
     const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth" , {
         method: "GET",
         headers: {
-            'Authorization': "Basic" + authString
+            'authorization': "Basic " + authString
         }
     });
     if(res.status === 200){
@@ -17,7 +17,7 @@ export async function verifyToken(){
     const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth/token" , {
         method: "GET",
         headers: {
-            'Authorization': window.localStorage.getItem("token")
+            'authorization': window.localStorage.getItem("token")
         }
     });
     return res.status === 200;
@@ -28,8 +28,8 @@ export async function registerUser(username, password) {
     const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth/create" , {
         method: "GET",
         headers: {
-            'Authorization': "Basic" + authString
+            'authorization': "Basic " + authString
         }
     });
-    return res.status === 200;
+    return res.status === 201;
 }
