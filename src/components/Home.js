@@ -1,12 +1,16 @@
 import React from 'react';
 import '../sass/Home.scss';
-import { Login } from './Login';
+import Login from './Login';
 import Maps from './Map';
 //import PluggableMap from './PluggableMap';
 
+import getCars from "../logic/car";
 
 export default function Home() {
 
+    const [cars, setCars] = React.useState([]);
+    React.useEffect(()=>{getCars(setCars)}, []);
+    console.log(cars);
     return (
         <div>
             <script src="https://unpkg.com/geo-coder"></script>
@@ -23,21 +27,21 @@ export default function Home() {
 
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
-                <div class="inputs">
-                    <div class="field has-addons">
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Sök efter en plats" />
+                <div className="inputs">
+                    <div className="field has-addons">
+                        <div className="control">
+                            <input className="input" type="text" placeholder="Sök efter en plats" />
                         </div>
-                        <div class="control">
-                            <a class="button is-info">
+                        <div className="control">
+                            <a className="button is-info">
                                 Search
                             </a>
                         </div>
                     </div>
 
-                    <div class="field has-addons">
-                        <div class="control">
-                            <div class="select is-halfwidth">
+                    <div className="field has-addons">
+                        <div className="control">
+                            <div className="select is-halfwidth">
                                 <select name="country">
                                     <option value="Borås">Borås</option>
                                     <option value="Eskilstuna">Eskilstuna</option>
@@ -62,13 +66,13 @@ export default function Home() {
                                 </select>
                             </div>
                         </div>
-                        <div class="control">
-                            <button type="submit" class="button is-primary">Stad</button>
+                        <div className="control">
+                            <button type="submit" className="button is-primary">Stad</button>
                         </div>
                     </div>
-                    <div class="field has-addons">
-                        <div class="control">
-                            <div class="select is-halfwidth">
+                    <div className="field has-addons">
+                        <div className="control">
+                            <div className="select is-halfwidth">
                                 <select name="country">
                                     <option value="Norrbotten">Norrbotten</option>
                                     <option value="Västerbotten">Västerbotten</option>
@@ -94,14 +98,14 @@ export default function Home() {
                                 </select>
                             </div>
                         </div>
-                        <div class="control">
-                            <button type="submit" class="button is-primary">Län</button>
+                        <div className="control">
+                            <button type="submit" className="button is-primary">Län</button>
                         </div>
                     </div>
                 </div>
                 <Maps/>
             </div>
-            
+
             <footer>
             </footer>
         </div >

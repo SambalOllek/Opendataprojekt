@@ -1,27 +1,35 @@
-export async function CheckUser(username, password) {
-    if(username === "user"){
-        return true;
-    }else{
-        return false;
-    }
-    /*const res = await fetch("" , {
+export async function getToken(username, password) {
+    const authString = btoa(username + ":" + password);
+    const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth" , {
         method: "GET",
         headers: {
-            'Authorization': authString
+            'authorization': "Basic " + authString
         }
-    })
-    const success = res.status === 200;
-    return success;*/
+    });
+    if(res.status === 200){
+        const token = await res.text();
+        return token;
+    }
+    return "";
 }
 
-export async function NewUser(username, password) {
-    
-    /*const res = await fetch("" , {
+export async function verifyToken(){
+    const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth/token" , {
         method: "GET",
         headers: {
-            'Authorization': authString
+            'authorization': window.localStorage.getItem("token")
         }
-    })
-    const success = res.status === 200;
-    return success;*/
+    });
+    return res.status === 200;
+}
+
+export async function registerUser(username, password) {
+    const authString = btoa(username + ":" + password);
+    const res = await fetch("http://localhost:8080/Opendata-Backend/api/auth/create" , {
+        method: "GET",
+        headers: {
+            'authorization': "Basic " + authString
+        }
+    });
+    return res.status === 201;
 }
