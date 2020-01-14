@@ -2,6 +2,8 @@ import React from 'react';
 import '../sass/Home.scss';
 import Login from './Login';
 import Maps from './Map';
+//import PluggableMap from './PluggableMap';
+
 import getCars from "../logic/car";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -18,6 +20,9 @@ export default function Home() {
     return (
         <div>
             <Header></Header>
+
+            <script src="https://unpkg.com/geo-coder"></script>
+
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
                 <div className="inputs">
