@@ -32,16 +32,18 @@
       latitude: 18.063240
     },
     {
-      longitude: 59.334591,
-      latitude: 18.063240
+      longitude: 56.523961,
+      latitude: 14.483262
     },
     {
       longitude: 59.334591,
       latitude: 18.063240
     }]
     ;
+
+    let iconFeature;
     const geoMarkerArray = coordinatesArray.map(coordinates => {
-    let iconFeature = new ol.Feature({
+    iconFeature = new ol.Feature({
       geometry:new ol.geom.Point(ol.proj.fromLonLat([coordinates.longitude, coordinates.latitude ])),
       name: 'Null Island',
       population: 4000,
