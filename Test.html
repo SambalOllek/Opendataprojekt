@@ -34,49 +34,44 @@
     {
       longitude: 56.523961,
       latitude: 14.483262
-    },
-    {
-      longitude: 59.334591,
-      latitude: 18.063240
-    }]
-    ;
+    }];
 
-    let iconFeature;
+     let iconStyle = new ol.style.Style({
+       image: new ol.style.Icon({
+         anchor: [0.5, 0.96],
+         src: 'src/sass/Addons/markerIcon.png'
+       })
+     });
+
     const geoMarkerArray = coordinatesArray.map(coordinates => {
-    iconFeature = new ol.Feature({
-      geometry:new ol.geom.Point(ol.proj.fromLonLat([coordinates.longitude, coordinates.latitude ])),
+    let marker = new ol.Feature({
+      geometry:new ol.geom.Point(ol.proj.fromLonLat([coordinates.latitude, coordinates.longitude ])),
       name: 'Null Island',
       population: 4000,
       rainfall: 500
     });
+    marker.setStyle(iconStyle);
+    return marker;
   });
-    var iconStyle = new ol.style.Style({
-      image: new ol.style.Icon({
-        anchor: [0.5, 46],
-        anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
-        src: 'src/sass/Addons/markerIcon.png'
-      })
+    console.log(geoMarkerArray);
+
+
+     let vectorSource = new ol.source.Vector({
+      features: [...geoMarkerArray]
     });
 
-    iconFeature.setStyle(iconStyle);
-
-    var vectorSource = new ol.source.Vector({
-      features: [iconFeature]
-    });
-
-    var vectorLayer = new ol.layer.Vector({
+     let vectorLayer = new ol.layer.Vector({
       source: vectorSource
     });
 
-    var rasterLayer = new ol.layer.Tile({
+     let rasterLayer = new ol.layer.Tile({
       source: new ol.source.TileJSON({
         url: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
         crossOrigin: ''
       })
     });
 
-    var map = new ol.Map({
+     let map = new ol.Map({
       layers: [rasterLayer, vectorLayer],
       target: document.getElementById('map'),
       view: new ol.View({
@@ -84,7 +79,7 @@
         zoom: 3
       })
     });
-
+    /*
     var element = document.getElementById('popup');
 
     var popup = new ol.Overlay({
@@ -125,6 +120,7 @@
       var hit = map.hasFeatureAtPixel(pixel);
       map.getTarget().style.cursor = hit ? 'pointer' : '';
     });
+    */
   </script>
 </body>
 
