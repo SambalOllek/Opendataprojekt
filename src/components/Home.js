@@ -1,8 +1,6 @@
 import React from 'react';
 import '../sass/Home.scss';
-import Login from './Login';
-import Maps from './Map';
-//import PluggableMap from './PluggableMap';
+import map from './Map';
 
 import getCars from "../logic/car";
 import Header from "./Header";
@@ -14,13 +12,18 @@ export default function Home() {
     React.useEffect(() => {
         getCars(setCars)
     }, []);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     console.log(cars);
 
+    React.useEffect(() => {
+        map();
+    }, []);
+
+
     return (
         <div>
-            <Header></Header>
-
+            <Header setIsLoggedIn={setIsLoggedIn}></Header>
             <script src="https://unpkg.com/geo-coder"></script>
 
             <div id="container">
@@ -101,7 +104,6 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <Maps/>
             </div>
             <Footer></Footer>
         </div>
