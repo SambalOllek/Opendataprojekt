@@ -8,9 +8,10 @@ export async function getToken(username, password) {
     });
     if(res.status === 200){
         const token = await res.text();
-        return token;
+        window.localStorage.setItem("token", token);
+        return true
     }
-    return "";
+    return false;
 }
 
 export async function verifyToken(){
