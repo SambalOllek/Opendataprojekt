@@ -1,9 +1,11 @@
-# Opendata Projekt 
+# Opendata Projekt - Frontend
 This opendata project is a react app constructed to be used as a third party car sales website that shows active sales in a selected region in Sweden. 
 The application consists of one page where all information is accessible, after pressing the login button a modal with login input is featured.
 ___
 
 ## 1 | Getting Started 
+To get the project running, first visit the ReadME in the backend repository of the project and follow the guideline there. You will also need a server for the frontend part of the project as they run on seperate servers.
+____ 
 For this application to function properly you need to start up react in the terminal. 
 You do this by right-clicking any file in the src folder and clicking "open terminal". 
 When the terminal is active, you type npm start and press enter. 

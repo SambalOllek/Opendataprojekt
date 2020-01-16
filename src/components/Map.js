@@ -7,15 +7,17 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import Point from "ol/geom/Point";
 import Feature from "ol/Feature";
-import {fromLonLat} from "ol/proj";
-import {Vector as VectorLayer, Tile as TileLayer} from "ol/layer";
-import {Vector as VectorSource, TileJSON} from "ol/source";
-import {Style, Icon} from "ol/style";
+import { fromLonLat } from "ol/proj";
+import { Vector as VectorLayer, Tile as TileLayer } from "ol/layer";
+import { Vector as VectorSource, TileJSON } from "ol/source";
+import { Style, Icon } from "ol/style";
 import Overlay from "ol/Overlay";
 import OSM from "ol/source/OSM";
 import createFeature from "../logic/feature";
 import vectorLayer from "../logic/vectorLayer";
 import addOverlay from "../logic/popupOverlay";
+
+let map
 
 export default function OlMap({cars, selectCar}) {
 
@@ -34,12 +36,12 @@ export default function OlMap({cars, selectCar}) {
         source: new OSM()
     });
 
-    let map = new Map({
+    map = new Map({
         layers: [rasterLayer, vectorLayer(geoMarkerArray)],
         target: document.getElementById('map'),
         view: new View({
             center: fromLonLat([14.8121, 56.8774]),
-            zoom: 7
+            zoom: 8
         })
     });
 
@@ -51,4 +53,8 @@ export default function OlMap({cars, selectCar}) {
         </div>
     )
 }
-  
+
+export function setLocation(cords) {
+    console.log(cords);
+    map.getView().setCenter(fromLonLat(cords))
+}
