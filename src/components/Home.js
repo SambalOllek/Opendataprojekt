@@ -14,8 +14,6 @@ export default function Home() {
     }, []);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-    console.log(cars);
-
     React.useEffect(() => {
         map();
     }, []);
