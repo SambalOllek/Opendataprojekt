@@ -10,7 +10,7 @@ export default function Home() {
 
     const [cars, setCars] = React.useState([]);
     React.useEffect(() => {
-        getCars(setCars)
+        //getCars(setCars)
     }, []);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
