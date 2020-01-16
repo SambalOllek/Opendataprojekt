@@ -1,23 +1,21 @@
 import React from 'react';
 import '../sass/Home.scss';
-import map from './Map';
+import OlMap from './Map';
 
 import getCars from "../logic/car";
 import Header from "./Header";
 import Footer from "./Footer";
+import CarInfo from "./CarInfo";
 
 export default function Home() {
 
     const [cars, setCars] = React.useState([]);
+    const [carSelected, setCarSelected] = React.useState();
+
     React.useEffect(() => {
         getCars(setCars)
     }, []);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-
-    React.useEffect(() => {
-        map();
-    }, []);
-
 
     return (
         <div>
@@ -102,6 +100,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <OlMap cars={cars} selectCar={setCarSelected}/>
+                {carSelected && <CarInfo car={carSelected}></CarInfo>}
             </div>
             <Footer></Footer>
         </div>
