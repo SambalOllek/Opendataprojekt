@@ -6,14 +6,16 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import Point from "ol/geom/Point";
 import Feature from "ol/Feature";
-import {fromLonLat} from "ol/proj";
-import {Vector as VectorLayer, Tile as TileLayer} from "ol/layer";
-import {Vector as VectorSource, TileJSON} from "ol/source";
-import {Style, Icon} from "ol/style";
+import { fromLonLat } from "ol/proj";
+import { Vector as VectorLayer, Tile as TileLayer } from "ol/layer";
+import { Vector as VectorSource, TileJSON } from "ol/source";
+import { Style, Icon } from "ol/style";
 import Overlay from "ol/Overlay";
 import OSM from "ol/source/OSM";
 
 const $ = window.$;
+
+let karta;
 
 export default function map() {
 
@@ -56,57 +58,19 @@ export default function map() {
         source: new OSM()
     });
 
-    let map = new Map({
+    karta = new Map({
         layers: [rasterLayer, vectorLayer],
         target: document.getElementById('map'),
         view: new View({
             center: fromLonLat([14.8121, 56.8774]),
-            zoom: 7
+            zoom: 8
         })
     });
 
-/*
-    var element = document.getElementById('popup');
-
-    var popup = new Overlay({
-        element: element,
-        positioning: 'bottom-center',
-        stopEvent: false,
-        offset: [0, -50]
-    });
-    map.addOverlay(popup);
-
-    // display popup on click
-    map.on('click', function (evt) {
-        var feature = map.forEachFeatureAtPixel(evt.pixel,
-            function (feature) {
-                return feature;
-            });
-        if (feature) {
-            var coordinates = feature.getGeometry().getCoordinates();
-            popup.setPosition(coordinates);
-            $(element).popover({
-                placement: 'top',
-                html: true,
-                content: feature.get('name')
-            });
-            $(element).popover('show');
-        } else {
-            $(element).popover('destroy');
-        }
-    });
-
-    // change mouse cursor when over marker
-    map.on('pointermove', function (e) {
-        if (e.dragging) {
-            $(element).popover('destroy');
-            return;
-        }
-        var pixel = map.getEventPixel(e.originalEvent);
-        var hit = map.hasFeatureAtPixel(pixel);
-        map.getTarget().style.cursor = hit ? 'pointer' : '';
-    });
-*/
 }
-//<interaction.Select style={selectedMarkerStyle} />
-  
+export function setLocation(cords) {
+    console.log(cords);
+    karta.getView().setCenter(fromLonLat(cords))
+
+}
+ 
