@@ -1,13 +1,18 @@
 import React from "react"
 import "../sass/CarInfo.scss";
 
-export default function CarInfo({car}){
-    console.log(car);
+export default function CarInfo({feature}){
+    const car = feature.values_.car
+    console.log(feature.values_.car);
     return (
         <div id="CarInfo">
-            <p>HEJ</p>
-            <p>Knapp till att spara bilen om man är inloggad</p>
+            <p>Bil Info:</p>
             <p>{car.brand}</p>
+            <p>{car.model}</p>
+            <p>{car.year}</p>
+            <p>{car.fuel}</p>
+            <p>{car.gearbox}</p>
+            <p>{car.mileage}</p>
             <p>{car.price}</p>
         </div>
     );

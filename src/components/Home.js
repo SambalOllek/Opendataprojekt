@@ -237,7 +237,7 @@ export default function Home() {
                     </div>
                 </div>
                 <OlMap cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
-                {carSelected && <CarInfo car={carSelected}></CarInfo>}
+                {carSelected && <CarInfo feature={carSelected}></CarInfo>}
             </div>
             <Footer></Footer>
         </div>
