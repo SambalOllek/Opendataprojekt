@@ -64,9 +64,18 @@ a:hover{
   text-decoration: underline;
 }
 
+.button.is-info{
+  background-color: rgb(41, 41, 150);
+}
+
 .button.is-primary{
   background-color:black;
 }
+
+.button.is-primary:hover{
+  background-color: rgba(77, 77, 77, 0.966);
+}
+
 
 
 @media (max-width: 600px){
