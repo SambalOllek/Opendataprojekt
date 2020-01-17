@@ -83,6 +83,71 @@ export default function Home() {
             case 'Örebro':
                 setLocation([15.2066, 59.27412]);
                 break;
+
+                
+            case 'Norrbotten':
+                setLocation([18.500977, 67.135829]);
+                break;
+            case 'Västerbotten':
+                setLocation([17.499998, 65.0]);
+                break;
+            case 'Västernorrland':
+                setLocation([16.929932, 62.739633]); 
+                break;
+            case 'Jämtland':
+                setLocation([14.238281, 63.283062]);
+                break;
+            case 'Gävleborg':
+                setLocation([16.655273, 60.780619]);  
+                break;
+            case 'Dalarna':
+                setLocation([15.600586, 60.678559 ]);
+                break;
+            case 'Värmland':
+                setLocation([13.271484, 59.425522 ]);
+                break;
+            case 'Örebro':
+                setLocation([15.28364, 59.27168 ]);
+                break;
+            case 'Västmanland':
+                setLocation([16.424561, 59.64554 ]); 
+                break;
+            case 'Uppsala':
+                setLocation([ 17.63889, 59.85882]); 
+                break;
+            case 'Stockholm':
+                setLocation([18.1667, 59.3333]);
+                break;
+            case 'Södermanland':
+                setLocation([16.66667, 59.25]);  
+                break;
+            case 'Västra Götaland':
+                setLocation([11.733398, 58.217025]);  
+                break;
+            case 'Östergötland':
+                setLocation([15.238037, 58.528125]);  
+                break;
+            case 'Jönköping':
+                setLocation([14.2, 57.75 ]); 
+                break;
+            case 'Kalmar':
+                setLocation([16.36163, 56.66157]); 
+                break;
+            case 'Gotland':
+                setLocation([18.5094, 57.4992]);
+                break;
+            case 'Kronoberg':
+                setLocation([14.66667, 56.66667 ]); 
+                break;
+            case 'Halland':
+                setLocation([12.821045, 56.716566 ]); 
+                break;
+            case 'Skåne':
+                setLocation([13.441772 , 55.995309 ]); 
+                break;
+            case 'Blekinge':
+                setLocation([14.381104,  56.24335 ]);
+                break;
         }
 
 
@@ -141,7 +206,7 @@ export default function Home() {
                     <div className="field has-addons">
                         <div className="control">
                             <div className="select is-halfwidth">
-                                <select name="country">
+                                <select name="country"onChange={changeLocation}>
                                     <option value="Norrbotten">Norrbotten</option>
                                     <option value="Västerbotten">Västerbotten</option>
                                     <option value="Västernorrland">Västernorrland</option>
