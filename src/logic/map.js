@@ -6,6 +6,7 @@ import Map from "ol/Map";
 import vectorLayer from "./vectorLayer";
 import View from "ol/View";
 import {fromLonLat} from "ol/proj";
+import initOverlay from "./overlay";
 
 let map;
 
@@ -30,9 +31,11 @@ export function initMap(selectCar){
                 return feature;
             });
         if (feature) {
-            selectCar(feature);
+            selectCar(feature.values_.car);
         }
     });
+
+    initOverlay(map);
 
     return map;
 }

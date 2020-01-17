@@ -3,18 +3,11 @@ import "../sass/Map.scss";
 import "../sass/CarInfo.scss";
 
 import {initMap, addLayer} from "../logic/map";
-import Popup from "./Popup";
-
-import Map from 'ol/Map';
-import View from 'ol/View';
 import {fromLonLat} from "ol/proj";
-import {Tile as TileLayer} from "ol/layer";
-import {Style, Icon} from "ol/style";
-import OSM from "ol/source/OSM";
 
 let map;
 
-export default function OlMap({cars, selectCar}) {
+export default function Map({cars, selectCar}) {
 
     React.useEffect(()=>{
         map = initMap(selectCar);
@@ -26,7 +19,7 @@ export default function OlMap({cars, selectCar}) {
 
     return (
         <div id="map">
-            <Popup map={map} selectCar={selectCar}></Popup>
+            <div id="overlay"></div>
         </div>
     )
 }
