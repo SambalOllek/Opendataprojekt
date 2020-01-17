@@ -7,7 +7,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CarInfo from "./CarInfo";
 import "ol/ol.css";
-import { fromLonLat } from "ol/proj";
 import { setLocation } from "./Map.js";
 
 export default function Home() {
@@ -18,6 +17,7 @@ export default function Home() {
     React.useEffect(() => {
         getCars(setCars)
     }, []);
+
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     function changeLocation(ev) {
@@ -171,7 +171,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <OlMap cars={cars} selectCar={setCarSelected}/>
+                <OlMap cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
                 {carSelected && <CarInfo car={carSelected}></CarInfo>}
             </div>
             <Footer></Footer>
