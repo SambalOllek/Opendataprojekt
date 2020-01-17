@@ -60,6 +60,14 @@ h1 {
   justify-content: center;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
+.button.is-primary{
+  background-color:black;
+}
+
 
 @media (max-width: 600px){
   #maintext{
