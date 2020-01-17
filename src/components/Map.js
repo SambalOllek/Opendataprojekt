@@ -45,7 +45,7 @@ export default function OlMap({cars, selectCar}) {
         })
     });
 
-    addOverlay(map, selectCar);
+    //addOverlay(map, selectCar);
 
     return (
         <div id="map">
