@@ -1,6 +1,7 @@
 //Kartan som används
 import React from 'react';
 import "../sass/Map.scss";
+import "../sass/CarInfo.scss";
 
 import Map from 'ol/Map';
 import View from 'ol/View';
@@ -12,22 +13,13 @@ import { Vector as VectorSource, TileJSON } from "ol/source";
 import { Style, Icon } from "ol/style";
 import Overlay from "ol/Overlay";
 import OSM from "ol/source/OSM";
+import createFeature from "../logic/feature";
+import vectorLayer from "../logic/vectorLayer";
+import addOverlay from "../logic/popupOverlay";
 
-const $ = window.$;
+let map
 
-let karta;
-
-export default function map() {
-
-    const coordinatesArray = [
-        {
-            longitude: 59.334591,
-            latitude: 18.063240
-        },
-        {
-            longitude: 56.523961,
-            latitude: 14.483262
-        }];
+export default function OlMap({cars, selectCar}) {
 
     let iconStyle = new Style({
         image: new Icon({
@@ -36,30 +28,16 @@ export default function map() {
         })
     });
 
-    const geoMarkerArray = coordinatesArray.map(coordinates => {
-        let marker = new Feature({
-            geometry: new Point(fromLonLat([coordinates.latitude, coordinates.longitude])),
-            name: 'Null Island',
-            population: 4000,
-            rainfall: 500
-        });
-        marker.setStyle(iconStyle);
-        return marker;
-    });
-
-    let vectorSource = new VectorSource({
-        features: [...geoMarkerArray]
-    });
-    let vectorLayer = new VectorLayer({
-        source: vectorSource
+    const geoMarkerArray = cars.map(car => {
+        return createFeature(car, iconStyle);
     });
 
     let rasterLayer = new TileLayer({
         source: new OSM()
     });
 
-    karta = new Map({
-        layers: [rasterLayer, vectorLayer],
+    map = new Map({
+        layers: [rasterLayer, vectorLayer(geoMarkerArray)],
         target: document.getElementById('map'),
         view: new View({
             center: fromLonLat([14.8121, 56.8774]),
@@ -67,10 +45,16 @@ export default function map() {
         })
     });
 
+   addOverlay(map, selectCar);
+
+    return (
+        <div id="map">
+            <div id="popup"/>
+        </div>
+    )
 }
+
 export function setLocation(cords) {
     console.log(cords);
-    karta.getView().setCenter(fromLonLat(cords))
-
+    map.getView().setCenter(fromLonLat(cords))
 }
- 

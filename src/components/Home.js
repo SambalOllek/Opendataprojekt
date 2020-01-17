@@ -1,9 +1,11 @@
 import React from 'react';
 import '../sass/Home.scss';
-import map from './Map';
+import OlMap from './Map';
+
 import getCars from "../logic/car";
 import Header from "./Header";
 import Footer from "./Footer";
+import CarInfo from "./CarInfo";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import { setLocation } from "./Map.js";
@@ -11,14 +13,12 @@ import { setLocation } from "./Map.js";
 export default function Home() {
 
     const [cars, setCars] = React.useState([]);
-    React.useEffect(() => {
-        //getCars(setCars)
-    }, []);
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [carSelected, setCarSelected] = React.useState();
 
     React.useEffect(() => {
-        map();
+        getCars(setCars)
     }, []);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     function changeLocation(ev) {
         const city = ev.currentTarget.value;
@@ -236,9 +236,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <OlMap cars={cars} selectCar={setCarSelected}/>
+                {carSelected && <CarInfo car={carSelected}></CarInfo>}
             </div>
             <Footer></Footer>
         </div>
-
     )
 }
