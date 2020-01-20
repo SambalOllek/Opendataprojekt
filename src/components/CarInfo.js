@@ -1,10 +1,10 @@
 import React from "react"
 import "../sass/CarInfo.scss";
 
-export default function CarInfo({car }){
-    console.log(car);
-    return (
-        <div id="CarInfo">
+export default function CarInfo({feature}){
+    const car = feature.values_.car
+    console.log(feature.values_.car);
+    return <div id="CarInfo">
             <p>Bil Info:</p>
             <p>{car.brand}</p>
             <p>{car.model}</p>
@@ -15,5 +15,5 @@ export default function CarInfo({car }){
             <p>{car.price}</p>
             <input type="button" className="button" value="Spara i intresse listan"/>
         </div>
-    );
+
 }
