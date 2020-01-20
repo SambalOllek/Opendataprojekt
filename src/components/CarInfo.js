@@ -13,6 +13,7 @@ export default function CarInfo({feature}){
             <p>{car.gearbox}</p>
             <p>{car.mileage}</p>
             <p>{car.price}</p>
+            <input type="button" className="button" value="Spara i intresse listan"/>
         </div>
 
 }

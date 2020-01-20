@@ -1,6 +1,6 @@
 import React from 'react';
 import '../sass/Home.scss';
-import OlMap from './Map';
+import Map from './Map';
 
 import getCars from "../logic/car";
 import Header from "./Header";
@@ -8,17 +8,25 @@ import Footer from "./Footer";
 import CarInfo from "./CarInfo";
 import "ol/ol.css";
 import { setLocation } from "./Map.js";
+import CarList from "./CarList";
+import userCarList from "../logic/userCarList";
 
 export default function Home() {
 
     const [cars, setCars] = React.useState([]);
     const [carSelected, setCarSelected] = React.useState();
+    const [carList, setCarList] = React.useState([]);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     React.useEffect(() => {
         getCars(setCars)
     }, []);
+    React.useEffect(()=>{
+        if(isLoggedIn == true){
+            setCarList(userCarList)
+        }
+    },[isLoggedIn])
 
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     function changeLocation(ev) {
         const city = ev.currentTarget.value;
@@ -236,7 +244,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <OlMap cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
+                {carList && <CarList carList={carList}/>}
+                <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
                 {carSelected && <CarInfo feature={carSelected}></CarInfo>}
             </div>
             <Footer></Footer>
