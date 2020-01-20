@@ -1,7 +1,6 @@
 import React from 'react';
 import '../sass/Home.scss';
 import Map from './Map';
-
 import getCars from "../logic/car";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -11,7 +10,7 @@ import { setLocation } from "./Map.js";
 import CarList from "./CarList";
 import userCarList from "../logic/userCarList";
 
-export default function Home() {
+export default function Loggedin() {
 
     const [cars, setCars] = React.useState([]);
     const [carSelected, setCarSelected] = React.useState();
@@ -171,12 +170,12 @@ export default function Home() {
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            {/* <input className="input" type="text" placeholder="Sök efter en plats" /> */}
+                            <input className="input" type="text" placeholder="Sök efter en plats" />
                         </div>
                         <div className="control">
-                            {/* <a className="button is-info">
+                            <a className="button is-info">
                                 Search
-                            </a> */}
+                            </a>
                         </div>
                     </div>
 
