@@ -9,23 +9,24 @@ import CarInfo from "./CarInfo";
 import "ol/ol.css";
 import { setLocation } from "./Map.js";
 import CarList from "./CarList";
-import userCarList from "../logic/userCarList";
+import {getUsersCarList} from "../logic/userCarList";
 
 export default function Home() {
 
     const [cars, setCars] = React.useState([]);
     const [carSelected, setCarSelected] = React.useState();
-    const [carList, setCarList] = React.useState([]);
+    const [userCarList, setUserCarList] = React.useState([]);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [updateList, setUpdateList] = React.useState(0);
 
     React.useEffect(() => {
-        getCars(setCars)
+        getCars(setCars);
     }, []);
     React.useEffect(()=>{
-        if(isLoggedIn == true){
-            setCarList(userCarList)
+        if(isLoggedIn === true){
+            getUsersCarList(setUserCarList);
         }
-    },[isLoggedIn])
+    },[isLoggedIn, updateList])
 
 
     function changeLocation(ev) {
@@ -91,8 +92,6 @@ export default function Home() {
             case 'Örebro':
                 setLocation([15.2066, 59.27412]);
                 break;
-
-                
             case 'Norrbotten':
                 setLocation([18.500977, 67.135829]);
                 break;
@@ -114,17 +113,8 @@ export default function Home() {
             case 'Värmland':
                 setLocation([13.271484, 59.425522 ]);
                 break;
-            case 'Örebro':
-                setLocation([15.28364, 59.27168 ]);
-                break;
             case 'Västmanland':
                 setLocation([16.424561, 59.64554 ]); 
-                break;
-            case 'Uppsala':
-                setLocation([ 17.63889, 59.85882]); 
-                break;
-            case 'Stockholm':
-                setLocation([18.1667, 59.3333]);
                 break;
             case 'Södermanland':
                 setLocation([16.66667, 59.25]);  
@@ -134,9 +124,6 @@ export default function Home() {
                 break;
             case 'Östergötland':
                 setLocation([15.238037, 58.528125]);  
-                break;
-            case 'Jönköping':
-                setLocation([14.2, 57.75 ]); 
                 break;
             case 'Kalmar':
                 setLocation([16.36163, 56.66157]); 
@@ -163,8 +150,9 @@ export default function Home() {
 
     return (
         <div>
-            <Header setIsLoggedIn={setIsLoggedIn}></Header>
-            <script src="https://unpkg.com/geo-coder"></script>
+            <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
+
+            <script src="https://unpkg.com/geo-coder"/>
 
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
@@ -244,11 +232,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                {carList && <CarList carList={carList}/>}
+                {userCarList && <CarList carList={userCarList}/>}
                 <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
-                {carSelected && <CarInfo feature={carSelected}></CarInfo>}
+                {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
             </div>
-            <Footer></Footer>
+            <Footer/>
         </div>
     )
 }
