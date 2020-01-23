@@ -10,6 +10,7 @@ import "ol/ol.css";
 import { setLocation } from "./Map.js";
 import CarList from "./CarList";
 import {getUsersCarList} from "../logic/userCarList";
+import {GetToken, LoginToken} from "./Service";
 
 export default function Home() {
 
@@ -27,6 +28,20 @@ export default function Home() {
             getUsersCarList(setUserCarList);
         }
     },[isLoggedIn, updateList])
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    async function OauthLogin() {
+            let token = await GetToken(code);
+            await LoginToken(token, setIsLoggedIn);
+    }
+
+    if(code){
+        OauthLogin();
+    }
+
 
 
     function changeLocation(ev) {

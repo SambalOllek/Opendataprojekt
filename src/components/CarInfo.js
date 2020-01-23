@@ -11,15 +11,16 @@ import {addCarToList} from "../logic/userCarList";
  * @returns {JSX.Element} {*}
  * @constructor
  */
-export default function CarInfo({car, isLoggedIn, update ,setUpdate}){
+export default function CarInfo({car, isLoggedIn, update, setUpdate}) {
 
-    function addCar(car){
-        addCarToList(car, update ,setUpdate);
+    function addCar(car) {
+        addCarToList(car, update, setUpdate);
     }
 
     console.log(car);
-    return <div id="CarInfo">
-        <p>Bil Info:</p>
+    return (
+        <div id="CarInfo">
+            <p>Bil Info:</p>
             <p>{car.brand}</p>
             <p>{car.model}</p>
             <p>{car.year}</p>
@@ -27,7 +28,9 @@ export default function CarInfo({car, isLoggedIn, update ,setUpdate}){
             <p>{car.gearbox}</p>
             <p>{car.mileage}</p>
             <p>{car.price}</p>
-            {isLoggedIn && <input type="button" className="button" value="Spara i intresse listan" onClick={()=>addCar(car)}/>}
+            {isLoggedIn &&
+            <input type="button" className="button" value="Spara i intresse listan" onClick={() => addCar(car)}/>}
         </div>
+    )
 }
 
