@@ -48,7 +48,7 @@ body {
   width: 100%;
 }
 
-h1 {
+h1,p{
   color: $coal;
   font-family: font;
   font-size: 20px;
@@ -74,6 +74,14 @@ a:hover{
 
 .button.is-primary:hover{
   background-color: rgba(77, 77, 77, 0.966);
+}
+
+.grid{
+  margin-left: 25%;
+  display: grid;
+  grid-template-columns: 60% 10%;
+  grid-template-rows: auto auto;
+
 }
 
 

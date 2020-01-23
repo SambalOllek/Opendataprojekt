@@ -3,17 +3,14 @@ import "../sass/CarInfo.scss";
 
 export default function CarInfo({feature}){
     const car = feature.values_.car
-    console.log(feature.values_.car);
-    return <div id="CarInfo">
-            <p>Bil Info:</p>
-            <p>{car.brand}</p>
-            <p>{car.model}</p>
-            <p>{car.year}</p>
-            <p>{car.fuel}</p>
-            <p>{car.gearbox}</p>
-            <p>{car.mileage}</p>
-            <p>{car.price}</p>
-            <input type="button" className="button" value="Spara i intresse listan"/>
+    console.log(feature.values_.car)
+
+    
+    return <div className="grid">
+    <div id="CarInfo">
+        <p>Bil Info:</p>
+        <input type="button" className="button" value="Spara i intresse listan"/>
         </div>
+    </div>
 
 }

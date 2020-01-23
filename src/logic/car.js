@@ -6,7 +6,9 @@ export default async function getCars(setCars) {
     const res = await fetch(`http://localhost:8080/Opendata-Backend/api/cars`, {
         method: "GET"
     });
-    const data = await res.json();
+
+    if(res.status !== 204){
+        const data = await res.json();
     let cars = [];
     data.map((car) => cars.push(new Car(car)));
     for(const car of cars){
@@ -17,8 +19,12 @@ export default async function getCars(setCars) {
             console.log(car);
             return car;
         }
+
     })
     setCars(cars);
+    }
+    
+    
 
     async function setCoordinates(car) {
         const geoCoder = new GeoCode();
