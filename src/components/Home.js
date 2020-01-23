@@ -248,8 +248,10 @@ export default function Home() {
                     </div>
                 </div>
                 {userCarList && <CarList carList={userCarList}/>}
+                <div className="Ihop">
                 <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
                 {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
+                </div>
             </div>
             <Footer/>
         </div>
