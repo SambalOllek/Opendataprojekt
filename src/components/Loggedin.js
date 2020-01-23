@@ -1,7 +1,6 @@
 import React from 'react';
 import '../sass/Home.scss';
 import Map from './Map';
-
 import getCars from "../logic/car";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -9,39 +8,23 @@ import CarInfo from "./CarInfo";
 import "ol/ol.css";
 import { setLocation } from "./Map.js";
 import CarList from "./CarList";
-import {getUsersCarList} from "../logic/userCarList";
-import {GetToken, LoginToken} from "./Service";
+import userCarList from "../logic/userCarList";
 
-export default function Home() {
+export default function Loggedin() {
 
     const [cars, setCars] = React.useState([]);
     const [carSelected, setCarSelected] = React.useState();
-    const [userCarList, setUserCarList] = React.useState([]);
+    const [carList, setCarList] = React.useState([]);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [updateList, setUpdateList] = React.useState(0);
 
     React.useEffect(() => {
-        getCars(setCars);
+        getCars(setCars)
     }, []);
     React.useEffect(()=>{
-        if(isLoggedIn === true){
-            getUsersCarList(setUserCarList);
+        if(isLoggedIn == true){
+            setCarList(userCarList)
         }
-    },[isLoggedIn, updateList])
-
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-
-    async function OauthLogin() {
-            let token = await GetToken(code);
-            await LoginToken(token, setIsLoggedIn);
-    }
-
-    if(code){
-        OauthLogin();
-    }
-
+    },[isLoggedIn])
 
 
     function changeLocation(ev) {
@@ -107,6 +90,8 @@ export default function Home() {
             case 'Örebro':
                 setLocation([15.2066, 59.27412]);
                 break;
+
+                
             case 'Norrbotten':
                 setLocation([18.500977, 67.135829]);
                 break;
@@ -128,8 +113,17 @@ export default function Home() {
             case 'Värmland':
                 setLocation([13.271484, 59.425522 ]);
                 break;
+            case 'Örebro':
+                setLocation([15.28364, 59.27168 ]);
+                break;
             case 'Västmanland':
                 setLocation([16.424561, 59.64554 ]); 
+                break;
+            case 'Uppsala':
+                setLocation([ 17.63889, 59.85882]); 
+                break;
+            case 'Stockholm':
+                setLocation([18.1667, 59.3333]);
                 break;
             case 'Södermanland':
                 setLocation([16.66667, 59.25]);  
@@ -139,6 +133,9 @@ export default function Home() {
                 break;
             case 'Östergötland':
                 setLocation([15.238037, 58.528125]);  
+                break;
+            case 'Jönköping':
+                setLocation([14.2, 57.75 ]); 
                 break;
             case 'Kalmar':
                 setLocation([16.36163, 56.66157]); 
@@ -165,21 +162,20 @@ export default function Home() {
 
     return (
         <div>
-            <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
-
-            <script src="https://unpkg.com/geo-coder"/>
+            <Header setIsLoggedIn={setIsLoggedIn}></Header>
+            <script src="https://unpkg.com/geo-coder"></script>
 
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            {/* <input className="input" type="text" placeholder="Sök efter en plats" /> */}
+                            <input className="input" type="text" placeholder="Sök efter en plats" />
                         </div>
                         <div className="control">
-                            {/* <a className="button is-info">
+                            <a className="button is-info">
                                 Search
-                            </a> */}
+                            </a>
                         </div>
                     </div>
 
@@ -247,11 +243,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                {userCarList && <CarList carList={userCarList}/>}
+                {carList && <CarList carList={carList}/>}
                 <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
-                {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
+                {carSelected && <CarInfo feature={carSelected}></CarInfo>}
             </div>
-            <Footer/>
+            <Footer></Footer>
         </div>
     )
 }
