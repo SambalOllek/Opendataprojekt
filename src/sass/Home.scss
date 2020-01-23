@@ -57,7 +57,7 @@ h1{
 h1,p, h4{
   color: $coal;
   font-family: font;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .inputs {
@@ -67,6 +67,10 @@ h1,p, h4{
 
 a:hover{
   text-decoration: underline;
+}
+
+.Error{
+  color: $paper;
 }
 
 .button.is-info{
