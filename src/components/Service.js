@@ -15,8 +15,9 @@
         console.log(userinfo);
         window.localStorage.setItem("token", token);
         setIsLoggedIn(true);
-        return userinfo;
     }
 }
+
+
 
 

@@ -35,14 +35,13 @@ export default function Home() {
 
     async function OauthLogin() {
             let token = await GetToken(code);
-            await LoginToken(token, setIsLoggedIn);
+            LoginToken(token, setIsLoggedIn);
+            window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
     }
 
     if(code){
         OauthLogin();
     }
-
-
 
     function changeLocation(ev) {
         const city = ev.currentTarget.value;
@@ -166,8 +165,6 @@ export default function Home() {
     return (
         <div>
             <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
-
-            <script src="https://unpkg.com/geo-coder"/>
 
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
