@@ -2,28 +2,28 @@ import React from 'react';
 import "../sass/Map.scss";
 import "../sass/CarInfo.scss";
 
-import {initMap, addLayer} from "../logic/map";
-import {fromLonLat} from "ol/proj";
+import { initMap, addLayer } from "../logic/map";
+import { fromLonLat } from "ol/proj";
 
 let map;
 
-export default function Map({cars, selectCar}) {
+export default function Map({ cars, selectCar }) {
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         map = initMap(selectCar);
-    },[]);
-    React.useEffect(()=>{
+    }, []);
+    React.useEffect(() => {
         addLayer(map, cars);
-    },[cars])
+    }, [cars])
 
 
     return (
-            <div id="map">
-                <div id="overlay">
-                </div>
+        <div id="map">
+            <div id="overlay">
             </div>
-           
-        
+        </div>
+
+
     )
 }
 

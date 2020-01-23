@@ -1,8 +1,8 @@
 import React from "react";
-import {getToken} from "./authentication";
+import { getToken } from "./authentication";
 
 
-export default function Logout({setIsLoggedIn}) {
+export default function Logout({ setIsLoggedIn }) {
     function logout() {
         setIsLoggedIn(false)
         window.localStorage.removeItem("token")
@@ -12,4 +12,3 @@ export default function Logout({setIsLoggedIn}) {
         <button id="Login" onClick={logout}>Log Out</button>
     </div>
 }
-    

@@ -9,8 +9,8 @@ import CarInfo from "./CarInfo";
 import "ol/ol.css";
 import { setLocation } from "./Map.js";
 import CarList from "./CarList";
-import {getUsersCarList} from "../logic/userCarList";
-import {GetToken, LoginToken} from "./Service";
+import { getUsersCarList } from "../logic/userCarList";
+import { GetToken, LoginToken } from "./Service";
 
 export default function Home() {
 
@@ -23,22 +23,22 @@ export default function Home() {
     React.useEffect(() => {
         getCars(setCars);
     }, []);
-    React.useEffect(()=>{
-        if(isLoggedIn === true){
+    React.useEffect(() => {
+        if (isLoggedIn === true) {
             getUsersCarList(setUserCarList);
         }
-    },[isLoggedIn, updateList])
+    }, [isLoggedIn, updateList])
 
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
 
     async function OauthLogin() {
-            let token = await GetToken(code);
-            await LoginToken(token, setIsLoggedIn);
+        let token = await GetToken(code);
+        await LoginToken(token, setIsLoggedIn);
     }
 
-    if(code){
+    if (code) {
         OauthLogin();
     }
 
@@ -114,49 +114,49 @@ export default function Home() {
                 setLocation([17.499998, 65.0]);
                 break;
             case 'Västernorrland':
-                setLocation([16.929932, 62.739633]); 
+                setLocation([16.929932, 62.739633]);
                 break;
             case 'Jämtland':
                 setLocation([14.238281, 63.283062]);
                 break;
             case 'Gävleborg':
-                setLocation([16.655273, 60.780619]);  
+                setLocation([16.655273, 60.780619]);
                 break;
             case 'Dalarna':
-                setLocation([15.600586, 60.678559 ]);
+                setLocation([15.600586, 60.678559]);
                 break;
             case 'Värmland':
-                setLocation([13.271484, 59.425522 ]);
+                setLocation([13.271484, 59.425522]);
                 break;
             case 'Västmanland':
-                setLocation([16.424561, 59.64554 ]); 
+                setLocation([16.424561, 59.64554]);
                 break;
             case 'Södermanland':
-                setLocation([16.66667, 59.25]);  
+                setLocation([16.66667, 59.25]);
                 break;
             case 'Västra Götaland':
-                setLocation([11.733398, 58.217025]);  
+                setLocation([11.733398, 58.217025]);
                 break;
             case 'Östergötland':
-                setLocation([15.238037, 58.528125]);  
+                setLocation([15.238037, 58.528125]);
                 break;
             case 'Kalmar':
-                setLocation([16.36163, 56.66157]); 
+                setLocation([16.36163, 56.66157]);
                 break;
             case 'Gotland':
                 setLocation([18.5094, 57.4992]);
                 break;
             case 'Kronoberg':
-                setLocation([14.66667, 56.66667 ]); 
+                setLocation([14.66667, 56.66667]);
                 break;
             case 'Halland':
-                setLocation([12.821045, 56.716566 ]); 
+                setLocation([12.821045, 56.716566]);
                 break;
             case 'Skåne':
-                setLocation([13.441772 , 55.995309 ]); 
+                setLocation([13.441772, 55.995309]);
                 break;
             case 'Blekinge':
-                setLocation([14.381104,  56.24335 ]);
+                setLocation([14.381104, 56.24335]);
                 break;
         }
 
@@ -165,9 +165,9 @@ export default function Home() {
 
     return (
         <div>
-            <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
+            <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
 
-            <script src="https://unpkg.com/geo-coder"/>
+            <script src="https://unpkg.com/geo-coder" />
 
             <div id="container">
                 <h1 id="Searchhead">Hitta bilar i ditt område</h1>
@@ -217,7 +217,7 @@ export default function Home() {
                     <div className="field has-addons">
                         <div className="control">
                             <div className="select is-halfwidth">
-                                <select name="country"onChange={changeLocation}>
+                                <select name="country" onChange={changeLocation}>
                                     <option value="Norrbotten">Norrbotten</option>
                                     <option value="Västerbotten">Västerbotten</option>
                                     <option value="Västernorrland">Västernorrland</option>
@@ -248,12 +248,12 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="Ihop">
-                {userCarList && <CarList carList={userCarList}/>}
-                <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
-                {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
+                    {userCarList && <CarList carList={userCarList} />}
+                    <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]} />
+                    {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList} />}
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

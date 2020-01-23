@@ -1,6 +1,6 @@
 import React from "react"
 import "../sass/CarInfo.scss";
-import {addCarToList} from "../logic/userCarList";
+import { addCarToList } from "../logic/userCarList";
 
 /**
  * Displays info about selected car and if logged in shows button to add car to users list
@@ -11,7 +11,7 @@ import {addCarToList} from "../logic/userCarList";
  * @returns {JSX.Element} {*}
  * @constructor
  */
-export default function CarInfo({car, isLoggedIn, update, setUpdate}) {
+export default function CarInfo({ car, isLoggedIn, update, setUpdate }) {
 
     function addCar(car) {
         addCarToList(car, update, setUpdate);
@@ -44,7 +44,7 @@ export default function CarInfo({car, isLoggedIn, update, setUpdate}) {
             <p>{car.price}</p>
             <br></br>
             {isLoggedIn &&
-            <input type="button" className="button" value="Spara i intresse listan" onClick={() => addCar(car)}/>}
+                <input type="button" className="button" value="Spara i intresse listan" onClick={() => addCar(car)} />}
         </div>
     )
 }

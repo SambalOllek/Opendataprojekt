@@ -1,12 +1,12 @@
 export async function getToken(username, password) {
     const authString = btoa(username + ":" + password);
-    const res = await fetch("/Opendata-Backend/api/auth" , {
+    const res = await fetch("/Opendata-Backend/api/auth", {
         method: "GET",
         headers: {
             'authorization': "Basic " + authString
         }
     });
-    if(res.status === 200){
+    if (res.status === 200) {
         const token = await res.text();
         window.localStorage.setItem("token", token);
         return true
@@ -14,8 +14,8 @@ export async function getToken(username, password) {
     return false;
 }
 
-export async function verifyToken(){
-    const res = await fetch("/Opendata-Backend/api/auth/token" , {
+export async function verifyToken() {
+    const res = await fetch("/Opendata-Backend/api/auth/token", {
         method: "GET",
         headers: {
             'authorization': window.localStorage.getItem("token")
@@ -26,7 +26,7 @@ export async function verifyToken(){
 
 export async function registerUser(username, password) {
     const authString = btoa(username + ":" + password);
-    const res = await fetch("/Opendata-Backend/api/auth/create" , {
+    const res = await fetch("/Opendata-Backend/api/auth/create", {
         method: "GET",
         headers: {
             'authorization': "Basic " + authString
