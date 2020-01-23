@@ -3,7 +3,7 @@ import Car from "../entities/Car";
 import {GeoCode} from "geo-coder";
 
 export default async function getCars(setCars) {
-    const res = await fetch(`http://localhost:8080/Opendata-Backend/api/cars`, {
+    const res = await fetch(`/Opendata-Backend/api/cars`, {
         method: "GET"
     });
 

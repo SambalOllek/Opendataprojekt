@@ -1,16 +1,31 @@
 import React from "react";
+import {deleteCarFromList} from "../logic/userCarList";
 
 export default function CarList({carList}){
+
+    let markedCars = [];
 
     function printCarsInfo(cars){
         let list = [];
         for(const car of cars){
-            list.push(<li><input id={car.id} type="checkbox"/>{car.brand} {car.model}</li>);
+            list.push(<li><input type="checkbox" onClick={()=>mark(car.id)}/>{car.brand} {car.model}</li>);
+        }
+        return list;
+    }
+
+    function mark(id){
+        const index = markedCars.find((carId) => id === carId);
+        if(!index){
+            markedCars.push(id);
+        } else {
+            markedCars.splice(index, 1);
         }
     }
 
     function removeMarkedCars(){
-
+        for(const id of markedCars){
+            deleteCarFromList(id);
+        }
     }
 
     return (

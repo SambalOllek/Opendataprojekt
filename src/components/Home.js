@@ -16,7 +16,7 @@ export default function Home() {
 
     const [cars, setCars] = React.useState([]);
     const [carSelected, setCarSelected] = React.useState();
-    const [userCarList, setUserCarList] = React.useState([]);
+    const [userCarList, setUserCarList] = React.useState();
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [updateList, setUpdateList] = React.useState(0);
 

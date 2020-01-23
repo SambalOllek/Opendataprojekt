@@ -6,14 +6,16 @@ import UserCarList from "../entities/UserCarList";
  * @returns {Promise<void>}
  */
 export async function getUsersCarList(setUserCarList) {
-    const res = await fetch(`http://localhost:8080/Opendata-Backend/api/userCars/`, {
+    const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "GET",
         headers: {
             'Authorization': window.localStorage.getItem("token")
         }
     });
-    const data = await res.json();
-    setUserCarList(new UserCarList(...data));
+    if(res.ok){
+        const data = await res.json();
+        setUserCarList(new UserCarList(...data));
+    }
 }
 
 /**
@@ -24,7 +26,7 @@ export async function getUsersCarList(setUserCarList) {
  * @returns {Promise<void>}
  */
 export async function addCarToList(car, update ,setUpdate){
-    const res = await fetch(`http://localhost:8080/Opendata-Backend/api/userCars/`, {
+    const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "POST",
         headers: {
             'Authorization': window.localStorage.getItem("token")
@@ -44,7 +46,7 @@ export async function addCarToList(car, update ,setUpdate){
  * @returns {Promise<void>}
  */
 export async function deleteCarFromList(carId, update ,setUpdate){
-    const res = await fetch(`http://localhost:8080/Opendata-Backend/api/userCars/${carId}`, {
+    const res = await fetch(`/Opendata-Backend/api/userCars/${carId}`, {
         method: "DELETE",
         headers: {
             'Authorization': window.localStorage.getItem("token")
