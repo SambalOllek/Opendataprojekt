@@ -18,9 +18,12 @@ export default function Map({cars, selectCar}) {
 
 
     return (
-        <div id="map">
-            <div id="overlay"></div>
-        </div>
+            <div id="map">
+                <div id="overlay">
+                </div>
+            </div>
+           
+        
     )
 }
 

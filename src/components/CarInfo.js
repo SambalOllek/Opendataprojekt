@@ -21,13 +21,28 @@ export default function CarInfo({car, isLoggedIn, update, setUpdate}) {
     return (
         <div id="CarInfo">
             <p>Bil Info:</p>
+            <br></br>
+            <h4>Märke</h4>
             <p>{car.brand}</p>
+            <br></br>
+            <h4>Modell</h4>
             <p>{car.model}</p>
+            <br></br>
+            <h4>ÅrsModell</h4>
             <p>{car.year}</p>
+            <br></br>
+            <h4>Bränsle</h4>
             <p>{car.fuel}</p>
+            <br></br>
+            <h4>Växellåda</h4>
             <p>{car.gearbox}</p>
+            <br></br>
+            <h4>Antal mil</h4>
             <p>{car.mileage}</p>
+            <br></br>
+            <h4>Pris</h4>
             <p>{car.price}</p>
+            <br></br>
             {isLoggedIn &&
             <input type="button" className="button" value="Spara i intresse listan" onClick={() => addCar(car)}/>}
         </div>
