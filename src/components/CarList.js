@@ -21,7 +21,7 @@ export default function CarList({ carList }) {
             markedCars.splice(index, 1);
         }
     }
-
+ //tar bort markerade bilar
     function removeMarkedCars() {
         for (const id of markedCars) {
             deleteCarFromList(id);

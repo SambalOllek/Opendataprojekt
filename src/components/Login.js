@@ -3,7 +3,7 @@ import React from "react";
 import "../sass/Login.scss";
 import { getToken, registerUser, verifyToken } from "./authentication.js";
 
-
+//Kollar om de inmatade värden matchar med det i databasen
 export default function Login({ setIsLoggedIn }) {
     async function onLogin() {
         const username = document.getElementById("username").value;
@@ -13,19 +13,19 @@ export default function Login({ setIsLoggedIn }) {
             alert("User Logged In!");
             setIsLoggedIn(true);
         } else {
-            setShowError("incorrect username or password!");
+            setShowError("Incorrect username or password!");
             alert("Incorrect username or password!")
         }
     }
 
-    //If username/password not exist, modal close, else = message show up
+    //If username/password does not exist, modal close, else = message show up
     async function register() {
         const rusername = document.getElementById("username").value;
         const rpassword = document.getElementById("password").value;
         if (await registerUser(rusername, rpassword)) {
-            alert("New User Registerd!");
+            alert("New User Registered!");
         } else {
-            setShowError("username exist");
+            setShowError("Username entered already exists");
         }
     }
 

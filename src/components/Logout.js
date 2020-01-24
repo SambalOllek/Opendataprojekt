@@ -1,7 +1,7 @@
 import React from "react";
 import { getToken } from "./authentication";
 
-
+//Loggar ut och tar bort ens inloggningstoken
 export default function Logout({ setIsLoggedIn }) {
     function logout() {
         setIsLoggedIn(false)

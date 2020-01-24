@@ -43,7 +43,7 @@ export default function Home() {
     }
 
 
-
+//funktion som ändrar kartcentrering baserat på vilken plats man trycker på i dropdown-listan
     function changeLocation(ev) {
         const city = ev.currentTarget.value;
         switch (city) {
