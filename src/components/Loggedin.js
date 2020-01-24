@@ -26,7 +26,7 @@ export default function Loggedin() {
         }
     }, [isLoggedIn])
 
-
+//ändrar kartcentrering beroende på vilken plats i dropdown-listan man väljer
     function changeLocation(ev) {
         const city = ev.currentTarget.value;
         switch (city) {

@@ -2,19 +2,22 @@
 import Car from "../entities/Car";
 import { GeoCode } from "geo-coder";
 
-export default async function getCars(addToCars) {
+export default async function getCars(setCars) {
     const res = await fetch(`/Opendata-Backend/api/cars`, {
         method: "GET"
     });
 
     if (res.status !== 204) {
         const data = await res.json();
-        let cars = [];
-        data.map((car) => cars.push(new Car(car)));
+        let cars = data.map((car) => new Car(car));
+
+        let completed = [];
         for (const car of cars) {
-            await setCoordinates(car);
-            if (car.latitude != undefined && car.longitude != undefined) {
-                addToCars(car);
+            const success = await setCoordinates(car);
+
+            if(success) {
+                completed = [...completed, car];
+                setCars(completed);
             }
         }
     }
@@ -25,8 +28,10 @@ export default async function getCars(addToCars) {
         try {
             car.latitude = res[0].lat;
             car.longitude = res[0].lng;
+            return true;
         } catch {
             console.log("Car-" + car.id + " address is invalid");
+            return false;
         }
     }
 }

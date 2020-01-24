@@ -3,7 +3,8 @@ import { deleteCarFromList } from "../logic/userCarList";
 
 export default function CarList({ carList, update, setUpdate, selectCar}) {
 
-
+    let markedCars = [];
+ //Visar information om bilarna om man trycker på markören på kartan
     function printCarsInfo(cars) {
         let list = [];
         for (const car of cars) {
@@ -11,12 +12,19 @@ export default function CarList({ carList, update, setUpdate, selectCar}) {
         }
         return list;
     }
-
+    //markerar bilarna på kartan efter koordinater och lägger till dem i listan med favoriter
+    function mark(id) {
+        const index = markedCars.find((carId) => id === carId);
+        if (!index) {
+            markedCars.push(id);
+        } else {
+            markedCars.splice(index, 1);
+        }
+    }
+ //tar bort markerade bilar från listan med favoriter
     function removeMarkedCars() {
-        for (const car of carList.cars) {
-            if(document.getElementById(car.id).checked){
-                deleteCarFromList(car.id, update, setUpdate);
-            }
+        for (const id of markedCars) {
+            deleteCarFromList(id, update, setUpdate);
         }
     }
 

@@ -19,14 +19,14 @@ export default function Home() {
     const [userCarList, setUserCarList] = React.useState();
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [updateList, setUpdateList] = React.useState(0);
+    const [searchList, setSeachList] = React.useState([]);
+    const [stringSearch, setStringSeach] = React.useState("");
 
-    const addToCars = (car) => {
-        setCars([...cars, car]);
-    }
 
     React.useEffect(() => {
-        getCars(addToCars);
+        getCars(setCars);
     }, []);
+
     React.useEffect(() => {
         if (isLoggedIn === true) {
             getUsersCarList(setUserCarList);
@@ -51,6 +51,18 @@ export default function Home() {
     if (code) {
         OauthLogin();
     }
+
+    function Search(){
+        const resultCar = cars.filter(car => {
+            if(car.brand === stringSearch){
+                return true;
+            }
+            else return false;
+        });
+        setSeachList(resultCar);
+
+    }
+
 
 
 //funktion som ändrar kartcentrering baserat på vilken plats man trycker på i dropdown-listan
@@ -184,12 +196,12 @@ export default function Home() {
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            {/* <input className="input" type="text" placeholder="Sök efter en plats" /> */}
+                            <input value={stringSearch} className="input" type="text" placeholder="Sök efter en plats" onChange={ev => setStringSeach(ev.target.value)}/>
                         </div>
                         <div className="control">
-                            {/* <a className="button is-info">
+                            <a className="button is-info" onClick={Search}>
                                 Search
-                            </a> */}
+                            </a>
                         </div>
                     </div>
 
@@ -258,9 +270,9 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="Ihop">
-                    {userCarList && <CarList carList={userCarList} update={updateList} setUpdate={setUpdateList} selectCar={setCarSelected}/>}
-                    <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]} />
-                    {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList} />}
+                {userCarList && <CarList carList={userCarList} update={updateList} setUpdate={setUpdateList} selectCar={setCarSelected}/>}
+                <Map cars={stringSearch?searchList: cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
+                {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
                 </div>
             </div>
             <Footer />

@@ -12,12 +12,10 @@ import { addCarToList } from "../logic/userCarList";
  * @constructor
  */
 export default function CarInfo({ car, isLoggedIn, update, setUpdate }) {
-
+    //lägger till en bil på kartan med hjälp av skrapning med attributerna som visas nedan
     function addCar(car) {
         addCarToList(car, update, setUpdate);
     }
-
-    console.log(car);
     return (
         <div id="CarInfo">
             <p>Bil Info:</p>
