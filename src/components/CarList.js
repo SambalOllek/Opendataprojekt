@@ -8,7 +8,7 @@ export default function CarList({ carList, update, setUpdate, selectCar}) {
     function printCarsInfo(cars) {
         let list = [];
         for (const car of cars) {
-            list.push(<li onClick={()=>selectCar(car)}><input type="checkbox" onClick={() => mark(car.id)} />{car.brand} {car.model}</li>);
+            list.push(<li key={car.id} onClick={()=>selectCar(car)}><input id={car.id} type="checkbox" />{car.brand} {car.model} {car.year}</li>);
         }
         return list;
     }

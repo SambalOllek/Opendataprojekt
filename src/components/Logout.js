@@ -1,5 +1,4 @@
 import React from "react";
-import { getToken } from "../logic/authentication";
 
 //Loggar ut och tar bort ens inloggningstoken
 export default function Logout({ setIsLoggedIn }) {

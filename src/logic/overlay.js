@@ -1,6 +1,6 @@
 import Overlay from "ol/Overlay";
 
-export default function initOverlay(map) {
+export default function initOverlay() {
     let element = document.getElementById('overlay');
 
     let popup = new Overlay({
