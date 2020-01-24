@@ -20,8 +20,12 @@ export default function Home() {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [updateList, setUpdateList] = React.useState(0);
 
+    const addToCars = (car) => {
+        setCars([...cars, car]);
+    }
+
     React.useEffect(() => {
-        getCars(setCars);
+        getCars(addToCars);
     }, []);
     React.useEffect(()=>{
         if(isLoggedIn === true){
