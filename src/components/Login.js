@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../sass/Login.scss";
-import { getToken, registerUser, verifyToken } from "./authentication.js";
+import { getToken, registerUser, verifyToken } from "../logic/authentication";
 
 //Kollar om de inmatade värden matchar med det i databasen
 export default function Login({ setIsLoggedIn }) {

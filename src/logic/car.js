@@ -16,12 +16,10 @@ export default async function getCars(addToCars) {
         }
         cars = cars.filter((car) => {
             if (car.latitude != undefined && car.longitude != undefined) {
-                console.log(car);
-                return car;
+                addToCars(car);
             }
 
         })
-        setCars(cars);
     }
 
 
