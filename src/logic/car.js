@@ -22,8 +22,6 @@ export default async function getCars(setCars) {
         }
     }
 
-
-
     async function setCoordinates(car) {
         const geoCoder = new GeoCode();
         const res = await geoCoder.geolookup(car.address);

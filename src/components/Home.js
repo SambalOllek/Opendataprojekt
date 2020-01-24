@@ -31,6 +31,11 @@ export default function Home() {
         if (isLoggedIn === true) {
             getUsersCarList(setUserCarList);
         }
+        if(isLoggedIn === false){
+            if(userCarList != undefined){
+                setUserCarList(undefined);
+            }
+        }
     }, [isLoggedIn, updateList])
 
 
@@ -39,7 +44,8 @@ export default function Home() {
 
     async function OauthLogin() {
         let token = await GetToken(code);
-        await LoginToken(token, setIsLoggedIn);
+        LoginToken(token, setIsLoggedIn);
+        window.history.pushState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
     }
 
     if (code) {
