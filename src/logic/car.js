@@ -2,7 +2,7 @@
 import Car from "../entities/Car";
 import { GeoCode } from "geo-coder";
 
-export default async function getCars(setCars) {
+export default async function getCars(addToCars) {
     const res = await fetch(`/Opendata-Backend/api/cars`, {
         method: "GET"
     });
@@ -32,7 +32,7 @@ export default async function getCars(setCars) {
         try {
             car.latitude = res[0].lat;
             car.longitude = res[0].lng;
-        } catch{
+        } catch {
             console.log("Car-" + car.id + " address is invalid");
         }
     }

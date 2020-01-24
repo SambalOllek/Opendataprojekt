@@ -9,12 +9,15 @@ export async function getUsersCarList(setUserCarList) {
     const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "GET",
         headers: {
+            'Content-Type': "application/json",
             'Authorization': window.localStorage.getItem("token")
         }
     });
     if (res.ok) {
         const data = await res.json();
-        setUserCarList(new UserCarList(...data));
+        setUserCarList(new UserCarList(data));
+    } else {
+        setUserCarList(undefined);
     }
 }
 
@@ -29,7 +32,8 @@ export async function addCarToList(car, update, setUpdate) {
     const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "POST",
         headers: {
-            'Authorization': window.localStorage.getItem("token")
+            'Authorization': window.localStorage.getItem("token"),
+            'Content-Type': "application/json"
         },
         body: JSON.stringify(car)
     });

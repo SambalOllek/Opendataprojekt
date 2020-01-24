@@ -31,7 +31,7 @@ export default function CarList({ carList }) {
     return (
         <div id="carList">
             <ul>
-                {printCarsInfo(carList)}
+                {printCarsInfo(carList.cars)}
             </ul>
             <input type="button" className="button" value="Ta bort markerade bilar" onClick={() => removeMarkedCars()} />
         </div>
