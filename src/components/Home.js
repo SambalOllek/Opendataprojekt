@@ -63,6 +63,13 @@ export default function Home() {
 
     }
 
+    function searchChange(ev){
+        setStringSeach(ev.target.value)
+        if(!ev.target.value){
+            setSeachList([]);
+        }
+    }
+
 
 
 //funktion som ändrar kartcentrering baserat på vilken plats man trycker på i dropdown-listan
@@ -196,7 +203,7 @@ export default function Home() {
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            <input value={stringSearch} className="input" type="text" placeholder="Sök efter en plats" onChange={ev => setStringSeach(ev.target.value)}/>
+                            <input value={stringSearch} className="input" type="text" placeholder="Sök efter en plats" onChange={searchChange}/>
                         </div>
                         <div className="control">
                             <a className="button is-info" onClick={Search}>
