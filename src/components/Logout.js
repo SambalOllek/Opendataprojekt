@@ -1,5 +1,5 @@
 import React from "react";
-import {getToken} from "./authentication";
+import {getToken} from "../logic/authentication";
 
 
 export default function Logout({setIsLoggedIn}) {

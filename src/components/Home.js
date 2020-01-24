@@ -10,7 +10,7 @@ import "ol/ol.css";
 import { setLocation } from "./Map.js";
 import CarList from "./CarList";
 import {getUsersCarList} from "../logic/userCarList";
-import {GetToken, LoginToken} from "./Service";
+import {GetToken, LoginToken} from "../logic/oauth";
 
 export default function Home() {
 
