@@ -40,6 +40,8 @@ export function initMap(selectCar){
     return map;
 }
 
+let layer = undefined;
+
 export function addLayer(map, cars){
     let iconStyle = new Style({
         image: new Icon({
@@ -51,6 +53,9 @@ export function addLayer(map, cars){
     const features = cars.map(car => {
         return createFeature(car, iconStyle);
     });
-
-    map.addLayer(vectorLayer(features));
+    if(layer){
+        map.removeLayer(layer);
+    }
+    layer = vectorLayer(features)
+    map.addLayer(layer);
 }

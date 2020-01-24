@@ -28,6 +28,5 @@ export default function Map({cars, selectCar}) {
 }
 
 export function setLocation(cords) {
-    console.log(cords);
     map.getView().setCenter(fromLonLat(cords))
 }

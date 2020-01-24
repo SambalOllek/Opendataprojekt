@@ -16,8 +16,6 @@ export default function CarInfo({car, isLoggedIn, update, setUpdate}) {
     function addCar(car) {
         addCarToList(car, update, setUpdate);
     }
-
-    console.log(car);
     return (
         <div id="CarInfo">
             <p>Bil Info:</p>

@@ -19,6 +19,8 @@ export default function Home() {
     const [userCarList, setUserCarList] = React.useState();
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [updateList, setUpdateList] = React.useState(0);
+    const [searchList, setSeachList] = React.useState([]);
+    const [stringSearch, setStringSeach] = React.useState("");
 
     React.useEffect(() => {
         getCars(setCars);
@@ -41,6 +43,18 @@ export default function Home() {
     if(code){
         OauthLogin();
     }
+
+    function Search(){
+        const resultCar = cars.filter(car => {
+            if(car.brand === stringSearch){
+                return true;
+            }
+            else return false;
+        });
+        setSeachList(resultCar);
+
+    }
+
 
 
 
@@ -174,12 +188,12 @@ export default function Home() {
                 <div className="inputs">
                     <div className="field has-addons">
                         <div className="control">
-                            {/* <input className="input" type="text" placeholder="Sök efter en plats" /> */}
+                            <input value={stringSearch} className="input" type="text" placeholder="Sök efter en plats" onChange={ev => setStringSeach(ev.target.value)}/>
                         </div>
                         <div className="control">
-                            {/* <a className="button is-info">
+                            <a className="button is-info" onClick={Search}>
                                 Search
-                            </a> */}
+                            </a>
                         </div>
                     </div>
 
@@ -249,7 +263,7 @@ export default function Home() {
                 </div>
                 <div className="Ihop">
                 {userCarList && <CarList carList={userCarList}/>}
-                <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
+                <Map cars={stringSearch?searchList: cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
                 {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
                 </div>
             </div>

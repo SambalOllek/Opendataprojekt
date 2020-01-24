@@ -16,7 +16,6 @@ export default async function getCars(setCars) {
     }
     cars = cars.filter((car) => {
         if(car.latitude != undefined && car.longitude != undefined){
-            console.log(car);
             return car;
         }
 
