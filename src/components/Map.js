@@ -26,7 +26,7 @@ export default function Map({ cars, selectCar }) {
 
     )
 }
-
+//ursprungscentrering kartan har när man först kommer in på sidan
 export function setLocation(cords) {
     console.log(cords);
     map.getView().setCenter(fromLonLat(cords))
