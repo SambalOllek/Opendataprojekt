@@ -13,13 +13,10 @@ export default async function getCars(addToCars) {
         data.map((car) => cars.push(new Car(car)));
         for (const car of cars) {
             await setCoordinates(car);
-        }
-        cars = cars.filter((car) => {
             if (car.latitude != undefined && car.longitude != undefined) {
                 addToCars(car);
             }
-
-        })
+        }
     }
 
 
