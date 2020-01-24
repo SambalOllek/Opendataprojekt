@@ -1,39 +1,39 @@
 import React from "react";
-import {deleteCarFromList} from "../logic/userCarList";
+import { deleteCarFromList } from "../logic/userCarList";
 
-export default function CarList({carList}){
+export default function CarList({ carList, update, setUpdate, selectCar}) {
 
     let markedCars = [];
 
-    function printCarsInfo(cars){
+    function printCarsInfo(cars) {
         let list = [];
-        for(const car of cars){
-            list.push(<li><input type="checkbox" onClick={()=>mark(car.id)}/>{car.brand} {car.model}</li>);
+        for (const car of cars) {
+            list.push(<li onClick={()=>selectCar(car)}><input type="checkbox" onClick={() => mark(car.id)} />{car.brand} {car.model}</li>);
         }
         return list;
     }
 
-    function mark(id){
+    function mark(id) {
         const index = markedCars.find((carId) => id === carId);
-        if(!index){
+        if (!index) {
             markedCars.push(id);
         } else {
             markedCars.splice(index, 1);
         }
     }
-
-    function removeMarkedCars(){
-        for(const id of markedCars){
-            deleteCarFromList(id);
+ //tar bort markerade bilar
+    function removeMarkedCars() {
+        for (const id of markedCars) {
+            deleteCarFromList(id, update, setUpdate);
         }
     }
 
     return (
         <div id="carList">
             <ul>
-                {printCarsInfo(carList)}
+                {printCarsInfo(carList.cars)}
             </ul>
-            <input type="button" className="button" value="Ta bort markerade bilar" onClick={()=>removeMarkedCars()}/>
+            <input type="button" className="button" value="Ta bort markerade bilar" onClick={() => removeMarkedCars()} />
         </div>
     )
 }

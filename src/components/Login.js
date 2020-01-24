@@ -1,10 +1,10 @@
 import React from "react";
 
 import "../sass/Login.scss";
-import {getToken, registerUser, verifyToken} from "./authentication.js";
+import { getToken, registerUser, verifyToken } from "../logic/authentication";
 
-
-export default function Login({setIsLoggedIn}) {
+//Kollar om de inmatade värden matchar med det i databasen
+export default function Login({ setIsLoggedIn }) {
     async function onLogin() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
@@ -13,19 +13,19 @@ export default function Login({setIsLoggedIn}) {
             alert("User Logged In!");
             setIsLoggedIn(true);
         } else {
-            setShowError("incorrect username or password!");
+            setShowError("Incorrect username or password!");
             alert("Incorrect username or password!")
         }
     }
 
-//If username/password not exist, modal close, else = message show up
+    //If username/password does not exist, modal close, else = message show up
     async function register() {
         const rusername = document.getElementById("username").value;
         const rpassword = document.getElementById("password").value;
         if (await registerUser(rusername, rpassword)) {
-            alert("New User Registerd!");
+            alert("New User Registered!");
         } else {
-            setShowError("username exist");
+            setShowError("Username entered already exists");
         }
     }
 
@@ -51,10 +51,10 @@ export default function Login({setIsLoggedIn}) {
     return <div className="Login">
         <button id="Login" onClick={openModal}>Login</button>
         <div className={modal}>
-            <div className="modal-background"/>
+            <div className="modal-background" />
             <div className="modal-content">
-                <input className="input" id="username" type="text" placeholder="Username"/>
-                <input className="input" id="password" type="password" placeholder="Password"/>
+                <input className="input" id="username" type="text" placeholder="Username" />
+                <input className="input" id="password" type="password" placeholder="Password" />
                 <p className="Error" >{ShowError}</p>
                 <button type="button" className="ClickLogin" onClick={onLogin}>Login</button>
                 <button type="button" className="ClickLogin" onClick={register}>Register</button>

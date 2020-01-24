@@ -1,7 +1,7 @@
 export default class UserCarList{
-    constructor({userId, cars}) {
-        this.userId = userId;
-        this.cars = cars;
+    constructor(data) {
+        this.userId = data.id;
+        this.cars = data.cars;
     }
 
 }

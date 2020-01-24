@@ -9,12 +9,15 @@ export async function getUsersCarList(setUserCarList) {
     const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "GET",
         headers: {
+            'Content-Type': "application/json",
             'Authorization': window.localStorage.getItem("token")
         }
     });
-    if(res.ok){
+    if (res.ok) {
         const data = await res.json();
-        setUserCarList(new UserCarList(...data));
+        setUserCarList(new UserCarList(data));
+    } else {
+        setUserCarList(undefined);
     }
 }
 
@@ -25,16 +28,17 @@ export async function getUsersCarList(setUserCarList) {
  * @param {Function} setUpdate if successfully added car to list increase update by 1
  * @returns {Promise<void>}
  */
-export async function addCarToList(car, update ,setUpdate){
+export async function addCarToList(car, update, setUpdate) {
     const res = await fetch(`/Opendata-Backend/api/userCars/`, {
         method: "POST",
         headers: {
-            'Authorization': window.localStorage.getItem("token")
+            'Authorization': window.localStorage.getItem("token"),
+            'Content-Type': "application/json"
         },
         body: JSON.stringify(car)
     });
-    if(res.ok){
-        setUpdate(update+1);
+    if (res.ok) {
+        setUpdate(update + 1);
     }
 }
 
@@ -45,14 +49,14 @@ export async function addCarToList(car, update ,setUpdate){
  * @param {Function} setUpdate if successfully removed car from list increase update by 1
  * @returns {Promise<void>}
  */
-export async function deleteCarFromList(carId, update ,setUpdate){
+export async function deleteCarFromList(carId, update, setUpdate) {
     const res = await fetch(`/Opendata-Backend/api/userCars/${carId}`, {
         method: "DELETE",
         headers: {
             'Authorization': window.localStorage.getItem("token")
         }
     });
-    if(res.ok){
-        setUpdate(update+1);
+    if (res.ok) {
+        setUpdate(update + 1);
     }
 }
