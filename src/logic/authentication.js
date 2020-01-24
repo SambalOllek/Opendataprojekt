@@ -13,7 +13,7 @@ export async function getToken(username, password) {
     }
     return false;
 }
-
+//verifierar användaren med hjälp av en token och databas
 export async function verifyToken() {
     const res = await fetch("/Opendata-Backend/api/auth/token", {
         method: "GET",
