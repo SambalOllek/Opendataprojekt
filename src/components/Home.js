@@ -245,7 +245,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="Ihop">
-                {userCarList && <CarList carList={userCarList}/>}
+                {userCarList && <CarList carList={userCarList} update={updateList} setUpdate={setUpdateList}/>}
                 <Map cars={cars} selectCar={setCarSelected} center={[14.80906, 56.87767]}/>
                 {carSelected && <CarInfo car={carSelected} isLoggedIn={isLoggedIn} update={updateList} setUpdate={setUpdateList}/>}
                 </div>

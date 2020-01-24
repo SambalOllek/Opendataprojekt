@@ -1,14 +1,14 @@
 import React from "react";
 import {deleteCarFromList} from "../logic/userCarList";
 
-export default function CarList({carList}){
+export default function CarList({carList, update, setUpdate}){
 
     let markedCars = [];
 
     function printCarsInfo(cars){
         let list = [];
         for(const car of cars){
-            list.push(<li><input type="checkbox" onClick={()=>mark(car.id)}/>{car.brand} {car.model}</li>);
+            list.push(<li><input type="checkbox" onClick={()=>mark(car.id)}/>{car.brand} {car.model} {car.year}</li>);
         }
         return list;
     }
@@ -24,14 +24,14 @@ export default function CarList({carList}){
 
     function removeMarkedCars(){
         for(const id of markedCars){
-            deleteCarFromList(id);
+            deleteCarFromList(id, update, setUpdate);
         }
     }
 
     return (
         <div id="carList">
             <ul>
-                {printCarsInfo(carList)}
+                {printCarsInfo(carList.cars)}
             </ul>
             <input type="button" className="button" value="Ta bort markerade bilar" onClick={()=>removeMarkedCars()}/>
         </div>
