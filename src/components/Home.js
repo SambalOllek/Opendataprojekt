@@ -31,6 +31,11 @@ export default function Home() {
         if (isLoggedIn === true) {
             getUsersCarList(setUserCarList);
         }
+        if(isLoggedIn === false){
+            if(userCarList != undefined){
+                setUserCarList(undefined);
+            }
+        }
     }, [isLoggedIn, updateList])
 
 
