@@ -35,7 +35,7 @@ export function initMap(selectCar) {
         }
     });
 
-    initOverlay(map);
+    initOverlay();
 
     return map;
 }
