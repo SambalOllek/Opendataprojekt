@@ -15,7 +15,9 @@ export default function CarList({ carList, update, setUpdate, selectCar}) {
  //tar bort markerade bilar från listan med favoriter
     function removeMarkedCars(cars) {
         for (const car of cars) {
-            deleteCarFromList(car.id, update, setUpdate);
+            if(document.getElementById(car.id).checked){
+                deleteCarFromList(car.id, update, setUpdate);
+            }
         }
     }
 
